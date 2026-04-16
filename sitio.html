@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Seminario Teológico Bautista · Cuba Oriental</title>
+  
+  <!-- Bootstrap 5 + Iconos + Fuentes Premium -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- GSAP para animaciones avanzadas -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  
+  <!-- Swiper para carruseles modernos -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <style>
+    :root {
+      --deep-blue: #061f2d;
+      --royal-blue: #0a2f44;
+      --gold: #d4af37;
+      --gold-light: #f4e4bc;
+      --cream: #faf7f0;
+      --glass-bg: rgba(255, 255, 255, 0.08);
+      --glass-border: rgba(255, 255, 255, 0.15);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: #1a1a1a;
+      overflow-x: hidden;
+    }
+
+    /* Efecto glassmorphism moderno */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 32px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    }
+
+    .glass-dark {
+      background: rgba(6, 31, 45, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    /* Navbar flotante */
+    .navbar-float {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 1300px;
+      z-index: 9999;
+      padding: 15px 30px;
+      border-radius: 60px;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      box-shadow: 0 20px 40px -15px rgba(0,0,0,0.1);
+    }
+
+    .navbar-brand-custom {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: var(--deep-blue);
+      letter-spacing: -0.02em;
+    }
+
+    .nav-link-custom {
+      color: var(--deep-blue) !important;
+      font-weight: 500;
+      margin: 0 5px;
+      padding: 8px 18px !important;
+      border-radius: 40px;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .nav-link-custom:hover {
+      background: var(--gold);
+      color: white !important;
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section Parallax */
+    .hero-immersive {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      isolation: isolate;
+      padding: 0;
+      margin-top: -20px;
+    }
+
+    .hero-bg-wrapper {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      width: 100%;
+      height: 120%;
+      object-fit: cover;
+      transform: scale(1.1);
+      filter: brightness(0.35) saturate(1.2);
+      will-change: transform;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 40%, rgba(212,175,55,0.15) 0%, transparent 60%),
+                  linear-gradient(135deg, rgba(6,31,45,0.85) 0%, rgba(10,47,68,0.6) 100%);
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 5;
+      padding: 0 5%;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 8vw, 6rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: white;
+      text-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .hero-title span {
+      color: var(--gold);
+      display: block;
+      font-size: 0.4em;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      letter-spacing: 6px;
+      margin-bottom: 20px;
+      opacity: 0.9;
+    }
+
+    .btn-immersive {
+      background: var(--gold);
+      color: var(--deep-blue);
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-weight: 600;
+      border: none;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 15px 30px -10px rgba(212, 175, 55, 0.4);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .btn-immersive:hover {
+      transform: scale(1.05) translateY(-5px);
+      box-shadow: 0 25px 40px -12px var(--gold);
+      background: white;
+      color: var(--deep-blue);
+    }
+
+    /* Secciones con efecto reveal */
+    .section-immersive {
+      padding: 120px 0;
+      position: relative;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-weight: 700;
+      margin-bottom: 60px;
+      color: var(--deep-blue);
+    }
+
+    .section-title .accent {
+      color: var(--gold);
+      border-bottom: 3px solid var(--gold);
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+
+    /* Cards modernas con hover effect */
+    .value-card-modern {
+      background: white;
+      border-radius: 30px;
+      padding: 35px 25px;
+      height: 100%;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      border: 1px solid rgba(0,0,0,0.04);
+      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .value-card-modern::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--gold-light) 0%, transparent 200%);
+      opacity: 0;
+      transition: opacity 0.5s;
+      z-index: 0;
+    }
+
+    .value-card-modern:hover {
+      transform: translateY(-15px) scale(1.02);
+      box-shadow: 0 30px 50px -15px rgba(212, 175, 55, 0.2);
+    }
+
+    .value-card-modern:hover::before {
+      opacity: 0.1;
+    }
+
+    .value-icon {
+      font-size: 3.2rem;
+      color: var(--gold);
+      margin-bottom: 25px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Programa cards con imagen */
+    .program-card-immersive {
+      border-radius: 30px;
+      overflow: hidden;
+      height: 100%;
+      background: white;
+      box-shadow: 0 20px 40px -15px rgba(0,0,0,0.1);
+      transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .program-card-immersive:hover {
+      transform: translateY(-20px);
+      box-shadow: 0 40px 60px -20px rgba(10, 47, 68, 0.3);
+    }
+
+    .program-img {
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.8s;
+    }
+
+    .program-card-immersive:hover .program-img {
+      transform: scale(1.1);
+    }
+
+    /* Swiper personalizado */
+    .swiper-gallery {
+      width: 100%;
+      padding: 30px 0 60px;
+    }
+
+    .swiper-slide {
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px -15px rgba(0,0,0,0.2);
+      transition: all 0.4s;
+    }
+
+    .swiper-slide-active {
+      transform: scale(1.02);
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+    }
+
+    /* Directorio cards */
+    .faculty-card-immersive {
+      background: white;
+      border-radius: 25px;
+      padding: 30px 20px;
+      text-align: center;
+      transition: all 0.3s;
+      border: 1px solid rgba(212, 175, 55, 0.1);
+    }
+
+    .faculty-card-immersive:hover {
+      background: var(--deep-blue);
+      color: white;
+      transform: scale(1.03);
+    }
+
+    .faculty-card-immersive:hover .faculty-icon {
+      color: var(--gold);
+    }
+
+    .faculty-icon {
+      font-size: 3.5rem;
+      color: var(--deep-blue);
+      margin-bottom: 20px;
+      transition: color 0.3s;
+    }
+
+    /* Formulario moderno */
+    .form-control-immersive {
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(0,0,0,0.05);
+      border-radius: 50px;
+      padding: 16px 24px;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+
+    .form-control-immersive:focus {
+      background: white;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15);
+    }
+
+    /* Animaciones */
+    .fade-up-trigger {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .fade-up-trigger.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .navbar-float {
+        width: 95%;
+        padding: 12px 20px;
+        top: 10px;
+      }
+      .navbar-brand-custom {
+        font-size: 1.3rem;
+      }
+      .section-immersive {
+        padding: 70px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR FLOTANTE -->
+<nav class="navbar-float d-flex justify-content-between align-items-center">
+  <a class="navbar-brand-custom text-decoration-none" href="#">
+    <i class="bi bi-book-half me-2" style="color: var(--gold);"></i>
+    STBCO
+    <small class="d-none d-md-inline fw-light fs-6 ms-2" style="color: #666;">Seminario Teológico Bautista</small>
+  </a>
+  <div class="d-none d-lg-flex gap-1">
+    <a href="#home" class="nav-link-custom text-decoration-none">Inicio</a>
+    <a href="#identidad" class="nav-link-custom text-decoration-none">Identidad</a>
+    <a href="#historia" class="nav-link-custom text-decoration-none">Historia</a>
+    <a href="#programas" class="nav-link-custom text-decoration-none">Programas</a>
+    <a href="#directorio" class="nav-link-custom text-decoration-none">Directorio</a>
+    <a href="#contacto" class="nav-link-custom text-decoration-none">Contacto</a>
+  </div>
+  <button class="btn btn-outline-dark d-lg-none rounded-pill px-4" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+    <i class="bi bi-list fs-4"></i>
+  </button>
+</nav>
+
+<!-- Offcanvas móvil -->
+<div class="offcanvas offcanvas-end glass-dark text-white" tabindex="-1" id="mobileMenu">
+  <div class="offcanvas-header border-bottom border-gold">
+    <h5 class="offcanvas-title" style="color: var(--gold);">Menú</h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="d-flex flex-column gap-3">
+      <a href="#home" class="text-white text-decoration-none fs-5 py-2" data-bs-dismiss="offcanvas"><i class="bi bi-house me-2"></i>Inicio</a>
+      <a href="#identidad" class="text-white text-decoration-none fs-5 py-2" data-bs-dismiss="offcanvas"><i class="bi bi-star me-2"></i>Identidad</a>
+      <a href="#historia" class="text-white text-decoration-none fs-5 py-2" data-bs-dismiss="offcanvas"><i class="bi bi-clock-history me-2"></i>Historia</a>
+      <a href="#programas" class="text-white text-decoration-none fs-5 py-2" data-bs-dismiss="offcanvas"><i class="bi bi-mortarboard me-2"></i>Programas</a>
+      <a href="#directorio" class="text-white text-decoration-none fs-5 py-2" data-bs-dismiss="offcanvas"><i class="bi bi-people me-2"></i>Directorio</a>
+      <a href="#contacto" class="text-white text-decoration-none fs-5 py-2" data-bs-dismiss="offcanvas"><i class="bi bi-envelope me-2"></i>Contacto</a>
+    </div>
+  </div>
+</div>
+
+<!-- HERO PARALLAX INMERSIVO -->
+<section id="home" class="hero-immersive">
+  <div class="hero-bg-wrapper">
+    <img src="https://images.pexels.com/photos/3723267/pexels-photo-3723267.jpeg?auto=compress&cs=tinysrgb&w=1920" alt="Seminario" class="hero-bg" id="parallaxBg">
+  </div>
+  <div class="hero-overlay"></div>
+  
+  <div class="container hero-content">
+    <div class="row align-items-center min-vh-100">
+      <div class="col-lg-8 mx-auto text-center text-lg-start">
+        <div class="glass-card p-5 p-lg-6" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(15px); border: 1px solid rgba(212,175,55,0.3);">
+          <span class="text-gold mb-3 d-block" style="color: var(--gold); letter-spacing: 8px; font-weight: 300;">DESDE 1949</span>
+          <h1 class="hero-title">
+            <span>FORMANDO LÍDERES PARA</span>
+            EL REINO DE DIOS
+          </h1>
+          <p class="lead text-white my-4 opacity-90">Formación integral de pastores y líderes cristianos para la edificación del pueblo de Dios y la extensión de Su reino en Cuba y el mundo.</p>
+          <div class="d-flex gap-3 flex-wrap justify-content-center justify-content-lg-start">
+            <a href="#identidad" class="btn-immersive btn">Descubrir más <i class="bi bi-arrow-right ms-2"></i></a>
+            <a href="#contacto" class="btn btn-outline-light rounded-pill px-5 py-3">Contactar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISIÓN VISIÓN VALORES -->
+<section id="identidad" class="section-immersive">
+  <div class="container">
+    <div class="row g-5 mb-5 fade-up-trigger">
+      <div class="col-md-6">
+        <div class="glass-card p-5 h-100">
+          <i class="bi bi-bullseye fs-1 mb-4" style="color: var(--gold);"></i>
+          <h3 class="display-6 fw-bold mb-4">Nuestra Misión</h3>
+          <p class="fs-5">Formar integralmente a pastores y líderes cristianos para la edificación del pueblo de DIOS y la extensión de Su reino.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="glass-card p-5 h-100">
+          <i class="bi bi-eye fs-1 mb-4" style="color: var(--gold);"></i>
+          <h3 class="display-6 fw-bold mb-4">Nuestra Visión</h3>
+          <p class="fs-5">Pastores y líderes cristianos con una preparación integral acorde a los principios bíblicos y a las necesidades del contexto social, en función del Reino de DIOS.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="section-title text-center fade-up-trigger"><span class="accent">Valores</span> que nos definen</h2>
+    <div class="row g-4">
+      <div class="col-6 col-md-4 col-lg-2 fade-up-trigger">
+        <div class="value-card-modern text-center">
+          <i class="bi bi-suit-heart-fill value-icon"></i>
+          <h5>Intimidad con Dios</h5>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2 fade-up-trigger" style="transition-delay: 0.05s;">
+        <div class="value-card-modern text-center">
+          <i class="bi bi-shield-shaded value-icon"></i>
+          <h5>Carácter cristiano</h5>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2 fade-up-trigger" style="transition-delay: 0.1s;">
+        <div class="value-card-modern text-center">
+          <i class="bi bi-book value-icon"></i>
+          <h5>Centralidad de Escrituras</h5>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2 fade-up-trigger" style="transition-delay: 0.15s;">
+        <div class="value-card-modern text-center">
+          <i class="bi bi-people value-icon"></i>
+          <h5>Relaciones sanas</h5>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2 fade-up-trigger" style="transition-delay: 0.2s;">
+        <div class="value-card-modern text-center">
+          <i class="bi bi-globe-americas value-icon"></i>
+          <h5>Visión global</h5>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2 fade-up-trigger" style="transition-delay: 0.25s;">
+        <div class="value-card-modern text-center">
+          <i class="bi bi-star-fill value-icon"></i>
+          <h5>Excelencia</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORIA CON PARALLAX -->
+<section id="historia" class="section-immersive position-relative text-white">
+  <div class="position-absolute top-0 start-0 w-100 h-100" style="background: url('https://images.pexels.com/photos/261763/pexels-photo-261763.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover fixed; filter: brightness(0.25);"></div>
+  <div class="container position-relative" style="z-index: 2;">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 fade-up-trigger">
+        <span class="text-gold fs-5 mb-3 d-block" style="color: var(--gold);">NUESTRA HISTORIA</span>
+        <h2 class="display-4 fw-bold mb-4">70+ años formando siervos fieles</h2>
+        <div class="glass-dark p-4 rounded-4">
+          <p class="fs-5">Fundado el 10 de octubre de 1949 en Santiago de Cuba, el Seminario Teológico Bautista de Cuba Oriental nació del anhelo de las iglesias bautistas orientales por formar pastores nacionales con una teología autóctona y fiel a las Escrituras.</p>
+          <p>En 1951 se adquirió el terreno de 20,000 m² en La Caoba, Carretera Central km 13½. Desde entonces, hemos graduado cientos de pastores y líderes que sirven en toda Cuba y más allá.</p>
+        </div>
+      </div>
+      <div class="col-lg-6 fade-up-trigger">
+        <img src="https://images.pexels.com/photos/3723267/pexels-photo-3723267.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Edificio histórico" class="img-fluid rounded-5 shadow-lg">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMAS -->
+<section id="programas" class="section-immersive bg-white">
+  <div class="container">
+    <h2 class="section-title text-center fade-up-trigger"><span class="accent">Programas</span> académicos</h2>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4 fade-up-trigger">
+        <div class="program-card-immersive">
+          <img src="https://images.pexels.com/photos/1370296/pexels-photo-1370296.jpeg?auto=compress&cs=tinysrgb&w=600" class="program-img w-100">
+          <div class="p-4">
+            <h4><i class="bi bi-mortarboard me-2" style="color: var(--gold);"></i>Licenciaturas</h4>
+            <ul class="list-unstyled mt-3">
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Ministerio Pastoral</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Ministerio con Niños</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Enseñanza OSCO</li>
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Plantación de Iglesias</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up-trigger" style="transition-delay: 0.1s;">
+        <div class="program-card-immersive">
+          <img src="https://images.pexels.com/photos/256455/pexels-photo-256455.jpeg?auto=compress&cs=tinysrgb&w=600" class="program-img w-100">
+          <div class="p-4">
+            <h4><i class="bi bi-award me-2" style="color: var(--gold);"></i>Maestrías</h4>
+            <ul class="list-unstyled mt-3">
+              <li class="mb-2"><i class="bi bi-dot me-2"></i>Liderazgo Organizacional</li>
+              <li class="mb-2"><i class="bi bi-dot me-2"></i>Trabajo Social</li>
+              <li class="mb-2"><i class="bi bi-dot me-2"></i>Southeastern Baptist T.S.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 fade-up-trigger" style="transition-delay: 0.2s;">
+        <div class="program-card-immersive">
+          <img src="https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=600" class="program-img w-100">
+          <div class="p-4">
+            <h4><i class="bi bi-calendar2-week me-2" style="color: var(--gold);"></i>Modalidad</h4>
+            <p class="mt-3">Semipresencial · Diploma (43 cr) · Bachiller (47 cr) · Licenciatura (30 cr). Duración 4 años.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIRECTORIO -->
+<section id="directorio" class="section-immersive" style="background: var(--cream);">
+  <div class="container">
+    <h2 class="section-title text-center fade-up-trigger"><span class="accent">Nuestro</span> equipo</h2>
+    
+    <h3 class="mb-4 fade-up-trigger"><i class="bi bi-building me-2"></i>Administración</h3>
+    <div class="row g-4 mb-5">
+      <div class="col-6 col-md-3 fade-up-trigger"><div class="faculty-card-immersive"><i class="bi bi-person-circle faculty-icon"></i><h5>MA. Joel Gutiérrez</h5><p class="text-muted">Rector</p></div></div>
+      <div class="col-6 col-md-3 fade-up-trigger"><div class="faculty-card-immersive"><i class="bi bi-person-circle faculty-icon"></i><h5>Ms. Alsuby Alba</h5><p class="text-muted">Vicerrector</p></div></div>
+      <div class="col-6 col-md-3 fade-up-trigger"><div class="faculty-card-immersive"><i class="bi bi-person-circle faculty-icon"></i><h5>Diorlis Hernández</h5><p class="text-muted">Capellán</p></div></div>
+      <div class="col-6 col-md-3 fade-up-trigger"><div class="faculty-card-immersive"><i class="bi bi-person-circle faculty-icon"></i><h5>Addiel Rodríguez</h5><p class="text-muted">Decano</p></div></div>
+    </div>
+
+    <h3 class="mb-4 fade-up-trigger"><i class="bi bi-easel me-2"></i>Docentes destacados</h3>
+    <div class="row g-4">
+      <div class="col-6 col-md-4 col-lg-2 fade-up-trigger"><div class="faculty-card-immersive"><img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle mb-3" width="80"><h6>Dr. Bill Warren</h6><small>Parábolas, Juan</small></div></div>
+      <div class="col-6 col-md-4 col-lg-2 fade-up-trigger"><div class="faculty-card-immersive"><img src="https://randomuser.me/api/portraits/women/44.jpg" class="rounded-circle mb-3" width="80"><h6>MA. Vitalia de la Torre</h6><small>Metodología</small></div></div>
+      <div class="col-6 col-md-4 col-lg-2 fade-up-trigger"><div class="faculty-card-immersive"><img src="https://randomuser.me/api/portraits/men/45.jpg" class="rounded-circle mb-3" width="80"><h6>Dr. Lloyd Harsh</h6><small>Historia</small></div></div>
+      <div class="col-6 col-md-4 col-lg-2 fade-up-trigger"><div class="faculty-card-immersive"><img src="https://randomuser.me/api/portraits/men/22.jpg" class="rounded-circle mb-3" width="80"><h6>Lic. Acner Sánchez</h6><small>Hechos</small></div></div>
+      <div class="col-6 col-md-4 col-lg-2 fade-up-trigger"><div class="faculty-card-immersive"><img src="https://randomuser.me/api/portraits/men/62.jpg" class="rounded-circle mb-3" width="80"><h6>MA. Joel Gutiérrez</h6><small>Griego</small></div></div>
+      <div class="col-6 col-md-4 col-lg-2 fade-up-trigger"><div class="faculty-card-immersive"><img src="https://randomuser.me/api/portraits/women/63.jpg" class="rounded-circle mb-3" width="80"><h6>Lic. Damayanti Sánchez</h6><small>Secretaría</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA SWIPER -->
+<section class="section-immersive bg-dark text-white">
+  <div class="container">
+    <h2 class="section-title text-center fade-up-trigger"><span class="accent">Galería</span> institucional</h2>
+  </div>
+  <div class="swiper swiper-gallery fade-up-trigger">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="https://images.pexels.com/photos/267586/pexels-photo-267586.jpeg?auto=compress&cs=tinysrgb&w=800"></div>
+      <div class="swiper-slide"><img src="https://images.pexels.com/photos/261763/pexels-photo-261763.jpeg?auto=compress&cs=tinysrgb&w=800"></div>
+      <div class="swiper-slide"><img src="https://images.pexels.com/photos/1370296/pexels-photo-1370296.jpeg?auto=compress&cs=tinysrgb&w=800"></div>
+      <div class="swiper-slide"><img src="https://images.pexels.com/photos/3723267/pexels-photo-3723267.jpeg?auto=compress&cs=tinysrgb&w=800"></div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="section-immersive">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-5 fade-up-trigger">
+        <div class="glass-card p-5 h-100" style="background: var(--deep-blue); color: white;">
+          <i class="bi bi-geo-alt-fill fs-1 mb-4" style="color: var(--gold);"></i>
+          <h3 class="mb-4">Contacto</h3>
+          <p class="mb-4"><i class="bi bi-pin-map-fill me-2"></i>Carretera Central Km 13½, Santiago de Cuba</p>
+          <p class="mb-4"><i class="bi bi-telephone me-2"></i>+53 22 61-23-45</p>
+          <p class="mb-4"><i class="bi bi-envelope me-2"></i>secdocestbcor@gmail.com</p>
+          <div class="d-flex gap-3 mt-5">
+            <a href="#" class="text-white fs-3"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-white fs-3"><i class="bi bi-youtube"></i></a>
+            <a href="#" class="text-white fs-3"><i class="bi bi-whatsapp"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7 fade-up-trigger">
+        <div class="glass-card p-5">
+          <h4 class="mb-4">Envíanos un mensaje</h4>
+          <form>
+            <div class="mb-3"><input type="text" class="form-control-immersive w-100" placeholder="Nombre completo"></div>
+            <div class="mb-3"><input type="email" class="form-control-immersive w-100" placeholder="Correo electrónico"></div>
+            <div class="mb-4"><textarea class="form-control-immersive w-100" rows="4" placeholder="Tu mensaje" style="border-radius: 30px;"></textarea></div>
+            <button type="submit" class="btn-immersive w-100 btn">Enviar mensaje <i class="bi bi-send ms-2"></i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="py-4 text-center text-white" style="background: var(--deep-blue);">
+  <p class="mb-0">© 2025 Seminario Teológico Bautista de Cuba Oriental · Formando siervos para el Reino</p>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // GSAP Parallax y animaciones avanzadas
+  gsap.registerPlugin(ScrollTrigger);
+  
+  // Parallax hero
+  gsap.to("#parallaxBg", {
+    y: 150,
+    ease: "none",
+    scrollTrigger: {
+      trigger: ".hero-immersive",
+      start: "top top",
+      end: "bottom top",
+      scrub: true
+    }
+  });
+
+  // Reveal al hacer scroll
+  const fadeElements = document.querySelectorAll('.fade-up-trigger');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.2 });
+  
+  fadeElements.forEach(el => observer.observe(el));
+
+  // Swiper galería
+  const swiper = new Swiper('.swiper-gallery', {
+    slidesPerView: 1.2,
+    spaceBetween: 20,
+    centeredSlides: true,
+    loop: true,
+    autoplay: { delay: 3000 },
+    pagination: { el: '.swiper-pagination', clickable: true },
+    breakpoints: {
+      768: { slidesPerView: 2 },
+      1024: { slidesPerView: 3 }
+    }
+  });
+
+  // Scroll suave
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
