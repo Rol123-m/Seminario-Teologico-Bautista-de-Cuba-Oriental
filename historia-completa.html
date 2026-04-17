@@ -4,19 +4,153 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Historia Completa · Seminario Teológico Bautista</title>
+  
+  <!-- Bootstrap 5 + Iconos -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Fuentes Premium -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Librerías CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+  
+  <!-- Estilos Propios -->
   <link rel="stylesheet" href="css/main.css">
+  
+  <style>
+    .year-badge {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--primary-sacred-gold);
+      line-height: 1;
+      text-shadow: 2px 2px 0 rgba(26, 60, 52, 0.1);
+    }
+    .timeline-row {
+      border-bottom: 2px solid rgba(196, 160, 53, 0.15);
+      padding: 35px 0;
+      transition: var(--transition-smooth);
+    }
+    .timeline-row:hover {
+      background: linear-gradient(90deg, rgba(196, 160, 53, 0.05) 0%, transparent 100%);
+      padding-left: 20px;
+    }
+    .timeline-row:last-child {
+      border-bottom: none;
+    }
+    .hero-history {
+      background: linear-gradient(135deg, var(--primary-deep-teal) 0%, #0d2620 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-history::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('https://images.pexels.com/photos/261763/pexels-photo-261763.jpeg?auto=compress&cs=tinysrgb&w=1920');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.15;
+      mix-blend-mode: overlay;
+    }
+    .stat-box {
+      background: white;
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: var(--shadow-soft);
+      text-align: center;
+      transition: var(--transition-smooth);
+    }
+    .stat-box:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+    }
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--primary-deep-teal);
+      line-height: 1;
+    }
+    .pioneer-card {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: var(--shadow-soft);
+      height: 100%;
+      border-left: 4px solid var(--primary-sacred-gold);
+    }
+    .quote-box {
+      background: linear-gradient(135deg, var(--secondary-soft-cream) 0%, white 100%);
+      border-radius: 30px;
+      padding: 40px;
+      position: relative;
+      box-shadow: var(--shadow-soft);
+    }
+    .quote-box::before {
+      content: '"';
+      position: absolute;
+      top: 20px;
+      left: 30px;
+      font-size: 8rem;
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--primary-sacred-gold);
+      opacity: 0.15;
+      line-height: 1;
+    }
+    .reason-card {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 15px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(0,0,0,0.05);
+      transition: var(--transition-smooth);
+    }
+    .reason-card:hover {
+      border-color: var(--primary-sacred-gold);
+      transform: translateX(10px);
+    }
+    .gallery-vintage {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      transition: var(--transition-smooth);
+      border: 3px solid white;
+    }
+    .gallery-vintage:hover {
+      transform: scale(1.02);
+      box-shadow: var(--shadow-hover);
+    }
+    .gallery-vintage img {
+      transition: transform 0.8s;
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+    .gallery-vintage:hover img {
+      transform: scale(1.1);
+    }
+  </style>
 </head>
 <body>
 
+<!-- NAVBAR FLOTANTE -->
 <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
   <div class="container">
-    <a class="navbar-brand" href="index.html"><i class="fas fa-cross text-gold me-2"></i><span class="fw-bold">Seminario Teológico Bautista <br><small>Cuba Oriental</small></span></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"><span class="navbar-toggler-icon"></span></button>
+    <a class="navbar-brand" href="index.html">
+      <i class="fas fa-cross text-gold me-2"></i>
+      <span class="fw-bold">Seminario Teológico Bautista <br><small>Cuba Oriental</small></span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+      <span class="navbar-toggler-icon"></span>
+    </button>
     <div class="collapse navbar-collapse" id="navbarMain">
       <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
         <li class="nav-item"><a class="nav-link" href="index.html">INICIO</a></li>
@@ -25,64 +159,405 @@
         <li class="nav-item"><a class="nav-link" href="docentes.html">COMUNIDAD</a></li>
         <li class="nav-item"><a class="nav-link" href="contacto.html">CONTACTO</a></li>
       </ul>
+      <div class="d-flex gap-2">
+        <a href="#" class="btn btn-outline-gold rounded-pill">DONAR</a>
+        <a href="login-intranet.html" class="btn btn-brick rounded-pill">AULA VIRTUAL</a>
+      </div>
     </div>
   </div>
 </nav>
 
-<header class="py-7 bg-teal text-white mt-5">
-  <div class="container py-5">
-    <h1 class="display-3 font-serif" data-aos="fade-up">Un Legado de Fe: 70+ Años de Historia</h1>
-    <p class="lead" data-aos="fade-up" data-aos-delay="100">Desde la visión de 1905 hasta el presente en La Caoba</p>
+<!-- HERO SECTION -->
+<header class="hero-history py-7 text-white mt-5">
+  <div class="container py-5 position-relative">
+    <div class="row">
+      <div class="col-lg-8">
+        <span class="badge bg-gold text-dark mb-3 px-4 py-2 rounded-pill" data-aos="fade-down">
+          <i class="fas fa-calendar-alt me-2"></i>Fundado el 10 de Octubre de 1949
+        </span>
+        <h1 class="display-2 font-serif" data-aos="fade-up">Un Legado de Fe</h1>
+        <h2 class="display-4 font-serif text-gold mb-4" data-aos="fade-up" data-aos-delay="100">70+ Años de Historia</h2>
+        <p class="lead opacity-90" data-aos="fade-up" data-aos-delay="200">
+          Desde la visión pionera de 1905 hasta el presente en La Caoba, el Seminario Teológico Bautista 
+          de Cuba Oriental ha sido un faro de formación bíblica en el corazón de Oriente.
+        </p>
+      </div>
+    </div>
   </div>
 </header>
 
-<section class="py-5">
+<!-- SECCIÓN: CONTEXTO Y UBICACIÓN -->
+<section class="py-5 bg-cream">
   <div class="container">
-    <div class="row mb-5">
-      <div class="col-lg-8 mx-auto text-center" data-aos="fade-up">
-        <p class="lead">Enmarcado en el km 13½ de la Carretera Central, rodeado del sincretismo de El Cobre, el Seminario se levanta como un faro de formación bíblica en el corazón de Oriente.</p>
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6" data-aos="fade-right">
+        <span class="text-gold fw-bold text-uppercase small">Nuestro Entorno</span>
+        <h2 class="display-5 font-serif mb-4">La Caoba: Tierra de <span class="text-teal">Desafío y Misión</span></h2>
+        <p class="lead">Enmarcado en el km 13½ de la Carretera Central, a 7½ km del Poblado de El Cobre, el Seminario se levanta en una región marcada por el sincretismo religioso y las raíces afrocubanas.</p>
+        <p>La población que habita los alrededores está fuertemente influenciada por el culto a la Virgen de la Caridad y prácticas sincréticas. Este contexto ha moldeado nuestra misión de formar pastores con una teología autóctona, capaces de contextualizar el Evangelio sin comprometer la verdad bíblica.</p>
+        <p>El nivel social es de mediano a bajo, con la agricultura y la crianza de animales como principales fuentes de empleo. Es en este entorno donde Dios nos ha llamado a ser sal y luz.</p>
       </div>
-    </div>
-
-    <!-- Línea de Tiempo -->
-    <div class="timeline-vertical">
-      <div class="timeline-row" data-aos="fade-up"><div class="row"><div class="col-md-3"><div class="year-badge">1905</div></div><div class="col-md-9"><h3>Asamblea de El Cristo</h3><p>Primera visión de un seminario nacional. Curso por correspondencia pionero con alumnos como Arsenio Fernández y Luis Chibás.</p></div></div></div>
-      <div class="timeline-row" data-aos="fade-up"><div class="row"><div class="col-md-3"><div class="year-badge">1907</div></div><div class="col-md-9"><h3>Colegios Internacionales del Cristo</h3><p>Primera escuela formal de teología. En 1912 se gradúan los primeros pastores: Maximino Montel, Alfredo Santana, entre otros.</p></div></div></div>
-      <div class="timeline-row" data-aos="fade-up"><div class="row"><div class="col-md-3"><div class="year-badge">1928</div></div><div class="col-md-9"><h3>Conexión con "Los Pinos Nuevos"</h3><p>Jóvenes orientales estudian en Placetas debido a dificultades de acceso a los Colegios Internacionales.</p></div></div></div>
-      <div class="timeline-row" data-aos="fade-up"><div class="row"><div class="col-md-3"><div class="year-badge">1940</div></div><div class="col-md-9"><h3>Cierre de la Escuela de Teología</h3><p>Los Colegios Internacionales cierran su departamento de teología, creando una crisis en la formación pastoral.</p></div></div></div>
-      <div class="timeline-row" data-aos="fade-up"><div class="row"><div class="col-md-3"><div class="year-badge">1949</div></div><div class="col-md-9"><h3>Fundación del Seminario</h3><p>El 19 de marzo se crea el Comité Pro-Seminario. El 10 de octubre, el Dr. Francisco Sabas Muguercia declara abierto el primer curso.</p></div></div></div>
-      <div class="timeline-row" data-aos="fade-up"><div class="row"><div class="col-md-3"><div class="year-badge">1951</div></div><div class="col-md-9"><h3>La Caoba</h3><p>Adquisición providencial de 20,000 m². Un dueño rechazó una oferta mayor para vender el terreno al Seminario por $9,000.</p></div></div></div>
-    </div>
-
-    <!-- La Brigada del Centavo -->
-    <div class="row mt-5 p-5 bg-cream rounded-4" data-aos="fade-up">
-      <div class="col-md-8">
-        <h3 class="font-serif">La Brigada del Centavo Diario</h3>
-        <p>Liderada por Adela Mourlot, Luz Gómez y Gloria Arenado. Si cada bautista daba $0.01 diario, se recaudaban $3.65 anuales por persona, sumando $3,000 para sostener el Seminario.</p>
-      </div>
-      <div class="col-md-4 text-center">
-        <i class="fas fa-coins fa-5x text-gold"></i>
-      </div>
-    </div>
-
-    <!-- Perfil del Pastor -->
-    <div class="row mt-5" data-aos="fade-up">
-      <div class="col-12">
-        <blockquote class="p-4 bg-light-sage rounded-4">
-          <h4>Perfil del Pastor que Formamos</h4>
-          <p class="mb-0">"Conservador y de mucho énfasis misionero." Una formación que ha evolucionado hacia una preparación integral, contextual y bíblica.</p>
-        </blockquote>
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="stat-box">
+          <i class="fas fa-tree fa-3x text-gold mb-3"></i>
+          <div class="stat-number">20,000</div>
+          <p class="text-muted mb-0">m² de terreno en La Caoba</p>
+        </div>
+        <div class="row mt-4 g-3">
+          <div class="col-6">
+            <div class="stat-box">
+              <i class="fas fa-users fa-2x text-gold mb-2"></i>
+              <div class="stat-number">135+</div>
+              <p class="text-muted mb-0">Capacidad de alojamiento</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="stat-box">
+              <i class="fas fa-church fa-2x text-gold mb-2"></i>
+              <div class="stat-number">70+</div>
+              <p class="text-muted mb-0">Años formando líderes</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<footer class="bg-dark text-white py-4 mt-5"><div class="container text-center"><p>&copy; 2024 Seminario Teológico Bautista de Cuba Oriental</p></div></footer>
+<!-- SECCIÓN: LÍNEA DE TIEMPO COMPLETA -->
+<section class="py-7">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="text-gold fw-bold text-uppercase small">Nuestra Trayectoria</span>
+      <h2 class="display-5 font-serif">Línea de Tiempo <span class="text-teal">Histórica</span></h2>
+      <div class="divider mx-auto"></div>
+    </div>
 
+    <!-- 1905 -->
+    <div class="timeline-row" data-aos="fade-up">
+      <div class="row align-items-center">
+        <div class="col-md-3 text-center text-md-start">
+          <div class="year-badge">1905</div>
+        </div>
+        <div class="col-md-9">
+          <h3 class="font-serif mb-2">Asamblea de El Cristo</h3>
+          <p class="mb-2">Del 7 al 9 de febrero, en la Asamblea de la Asociación de Iglesias Bautistas de Cuba Oriental, se establece como prioridad la <strong>preparación de un Ministerio Doméstico</strong> y la creación de una <strong>Escuela de Teología por correspondencia</strong>.</p>
+          <p class="text-muted small"><i class="fas fa-users me-1"></i> Alumnos pioneros: Arsenio Fernández Cutiño, Luis F. Chibás Maleta, Elías Cuza Navarro, Orestes Hernández Viera, Félix Romero Rojas, Vicente Bartutis Bartutis y Juan Ortiz Llácer.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1907 -->
+    <div class="timeline-row" data-aos="fade-up">
+      <div class="row align-items-center">
+        <div class="col-md-3 text-center text-md-start">
+          <div class="year-badge">1907</div>
+        </div>
+        <div class="col-md-9">
+          <h3 class="font-serif mb-2">Colegios Internacionales del Cristo</h3>
+          <p class="mb-2">El 5 de febrero se inauguran los Colegios Internacionales del Cristo, el plantel de enseñanza superior más prestigioso de la región oriental. En el curso 1909-1910 comienza la <strong>Primera Escuela de Teología</strong> fundada por misioneros protestantes en Cuba.</p>
+          <p class="text-muted small"><i class="fas fa-graduation-cap me-1"></i> Primeros graduados (1912): Maximino Montel Fragosa, Alfredo Santana Bauzá, J. Luis Molina Valdés, Manuel Caballería Galí y José Rodríguez Prianes.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1928 -->
+    <div class="timeline-row" data-aos="fade-up">
+      <div class="row align-items-center">
+        <div class="col-md-3 text-center text-md-start">
+          <div class="year-badge">1928</div>
+        </div>
+        <div class="col-md-9">
+          <h3 class="font-serif mb-2">Seminario Bíblico "Los Pinos Nuevos"</h3>
+          <p class="mb-2">Fundado en Placetas, Santa Clara, por Elmer V. Thompson y B. G. Lavastida. Jóvenes de Cuba Oriental que no podían acceder a los Colegios Internacionales encontraron aquí su formación.</p>
+          <p class="text-muted small"><i class="fas fa-user-graduate me-1"></i> Alumnos orientales destacados: Ramón Fumero Dorta, Delfín Brooks M., Armando Tamayo Leyva, Jesús Soler Chías, Pedro Azahares Gainza, Anastasio Díaz Santos, Celestino González Coca, Elías Castellano Santander.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1940 -->
+    <div class="timeline-row" data-aos="fade-up">
+      <div class="row align-items-center">
+        <div class="col-md-3 text-center text-md-start">
+          <div class="year-badge">1940</div>
+        </div>
+        <div class="col-md-9">
+          <h3 class="font-serif mb-2">Cierre de la Escuela de Teología</h3>
+          <p>Los Colegios Internacionales cierran su departamento de teología, creando una crisis en la formación pastoral en Cuba Oriental. La necesidad de un seminario propio se vuelve urgente.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1948 -->
+    <div class="timeline-row" data-aos="fade-up">
+      <div class="row align-items-center">
+        <div class="col-md-3 text-center text-md-start">
+          <div class="year-badge">1948</div>
+        </div>
+        <div class="col-md-9">
+          <h3 class="font-serif mb-2">Seminario Evangélico de Teología de Matanzas</h3>
+          <p>Tres jóvenes bautistas orientales (Marino Santos Martínez, Santiago Entenza Cuellar y Saida Barrios Garriegos) son enviados a Matanzas, pero la distancia y el costo demuestran que esta no era una solución sostenible para Cuba Oriental.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1949 - Fundación -->
+    <div class="timeline-row" data-aos="fade-up">
+      <div class="row align-items-center">
+        <div class="col-md-3 text-center text-md-start">
+          <div class="year-badge">1949</div>
+        </div>
+        <div class="col-md-9">
+          <h3 class="font-serif mb-2 text-gold">Fundación del Seminario</h3>
+          <ul class="list-unstyled mt-3">
+            <li class="mb-2"><i class="fas fa-calendar-check text-gold me-2"></i> <strong>19 de marzo:</strong> El Comité de Relaciones Ministeriales crea la "Comisión Pro-Seminario" con los pastores J. Mario Casanella, Agustín González Seisdedos, Pedro Abella Oliveros, Francisco Sabas Muguercia y Dr. José Serrá Padrisa.</li>
+            <li class="mb-2"><i class="fas fa-calendar-check text-gold me-2"></i> <strong>12 y 26 de abril:</strong> Reuniones en la Primera Iglesia Bautista de Santiago de Cuba para elaborar los planes.</li>
+            <li class="mb-2"><i class="fas fa-calendar-check text-gold me-2"></i> <strong>6 de mayo:</strong> Se presentan las "Razones" para crear el Seminario propio.</li>
+            <li class="mb-2"><i class="fas fa-calendar-check text-gold me-2"></i> <strong>10 de octubre:</strong> En solemne acto en la Primera Iglesia Bautista de Santiago de Cuba, el Dr. Francisco Sabas Muguercia declara: <em>"¡Declaro abierto el Primer Curso del Seminario Teológico Bautista de Cuba Oriental!"</em></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1951 -->
+    <div class="timeline-row" data-aos="fade-up">
+      <div class="row align-items-center">
+        <div class="col-md-3 text-center text-md-start">
+          <div class="year-badge">1951</div>
+        </div>
+        <div class="col-md-9">
+          <h3 class="font-serif mb-2">La Caoba: Nuestro Hogar</h3>
+          <ul class="list-unstyled mt-3">
+            <li class="mb-2"><i class="fas fa-calendar-check text-gold me-2"></i> <strong>15 de febrero:</strong> La Junta de Gobierno acuerda gestionar la adquisición de un terreno fuera de Santiago.</li>
+            <li class="mb-2"><i class="fas fa-calendar-check text-gold me-2"></i> <strong>28 de febrero:</strong> Adquisición providencial del terreno de 20,000 m² en el Km 13½ de la Carretera Central. El dueño, Sr. Ángel Robles, rechazó una oferta de $13,000 para venderlo al Seminario por $9,000.</li>
+            <li class="mb-2"><i class="fas fa-calendar-check text-gold me-2"></i> <strong>10 de octubre:</strong> Dedicación del edificio propio en La Caoba. El Vice-Rector Dr. José Luis Molina expresó: <em>"...al nuevo curso de nuestro Seminario Bautista, pero esta vez con más gozo aún: el de tener nuestro edificio propio..."</em></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECCIÓN: LAS 6 RAZONES -->
+<section class="py-5 bg-light-sage">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-5" data-aos="fade-right">
+        <span class="text-gold fw-bold text-uppercase small">El Porqué de Nuestra Existencia</span>
+        <h2 class="display-5 font-serif mb-4">Las 6 Razones que <span class="text-teal">Fundaron el Seminario</span></h2>
+        <p class="mb-4">Presentadas por la Comisión Pro-Seminario el 6 de mayo de 1949:</p>
+        <a href="#" class="btn btn-teal rounded-pill px-4">
+          <i class="fas fa-scroll me-2"></i>Ver documento original
+        </a>
+      </div>
+      <div class="col-lg-7" data-aos="fade-left">
+        <div class="reason-card"><i class="fas fa-users text-gold me-3"></i> <strong>1.</strong> La escasez de obreros bautistas para sostener el trabajo existente y la posibilidad de expansión.</div>
+        <div class="reason-card"><i class="fas fa-church text-gold me-3"></i> <strong>2.</strong> La necesidad de un Seminario que se ajuste a los principios y prácticas bautistas.</div>
+        <div class="reason-card"><i class="fas fa-check-circle text-gold me-3"></i> <strong>3.</strong> Ningún otro seminario puede satisfacer nuestras necesidades (distancia o diferencias doctrinales).</div>
+        <div class="reason-card"><i class="fas fa-coins text-gold me-3"></i> <strong>4.</strong> Es más conveniente invertir el dinero en un seminario propio que enviar jóvenes a otros.</div>
+        <div class="reason-card"><i class="fas fa-hand-holding-heart text-gold me-3"></i> <strong>5.</strong> Los estudiantes podrán ayudar a iglesias cercanas durante sus estudios.</div>
+        <div class="reason-card"><i class="fas fa-bullhorn text-gold me-3"></i> <strong>6.</strong> Un seminario organizado servirá como llamado constante a jóvenes y señoritas al ministerio.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECCIÓN: LA BRIGADA DEL CENTAVO DIARIO -->
+<section class="py-5">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-7" data-aos="fade-right">
+        <div class="quote-box">
+          <span class="badge bg-gold text-dark mb-3 px-3 py-2">Un Ejemplo de Fe y Sacrificio</span>
+          <h3 class="font-serif display-6 mb-4">La Brigada del Centavo Diario</h3>
+          <p class="lead">Liderada por tres valientes hermanas:</p>
+          <div class="row mt-3 mb-4">
+            <div class="col-md-4"><div class="pioneer-card"><i class="fas fa-female fa-2x text-gold mb-2"></i><h5>Adela Mourlot Hechavarría</h5></div></div>
+            <div class="col-md-4"><div class="pioneer-card"><i class="fas fa-female fa-2x text-gold mb-2"></i><h5>Luz Gómez de Tallet</h5></div></div>
+            <div class="col-md-4"><div class="pioneer-card"><i class="fas fa-female fa-2x text-gold mb-2"></i><h5>Gloria Arenado Quevedo</h5></div></div>
+          </div>
+          <p>Promovieron una ofrenda que consistía en la dedicación de <strong>un centavo diario</strong> por cada bautista oriental. Esto representaba $3.65 anuales por persona, logrando recaudar aproximadamente <strong>$3,000.00</strong> para el sostenimiento del Seminario en sus primeros años.</p>
+          <div class="alert alert-light border-0 rounded-4 mt-4">
+            <i class="fas fa-calculator text-gold me-2"></i>
+            <strong>Cálculo:</strong> Si cada bautista da $0.01 diario = $3.65 anual × cientos de fieles = $3,000+ para la obra del Señor.
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5 text-center" data-aos="fade-left">
+        <i class="fas fa-coins fa-6x text-gold mb-4"></i>
+        <i class="fas fa-piggy-bank fa-5x text-teal mb-3"></i>
+        <h4 class="font-serif">"El poco de muchos hizo posible el sueño"</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECCIÓN: PERFIL DEL PASTOR Y RECTORES -->
+<section class="py-5 bg-cream">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-6" data-aos="fade-right">
+        <h3 class="font-serif mb-4"><i class="fas fa-user-tie text-gold me-2"></i>Perfil del Pastor que Formamos</h3>
+        <div class="p-4 bg-white rounded-4 shadow-sm">
+          <p class="lead mb-3">"Conservador y de mucho énfasis misionero."</p>
+          <p>Desde los inicios, el Seminario se propuso formar pastores con estas características. Sin embargo, a lo largo de los años, esta visión ha evolucionado hacia una <strong>formación integral</strong> que abarca:</p>
+          <ul class="mt-3">
+            <li class="mb-2"><i class="fas fa-check-circle text-gold me-2"></i> Sólida base bíblica y teológica</li>
+            <li class="mb-2"><i class="fas fa-check-circle text-gold me-2"></i> Carácter cristiano comprobado</li>
+            <li class="mb-2"><i class="fas fa-check-circle text-gold me-2"></i> Visión misionera y contextual</li>
+            <li class="mb-2"><i class="fas fa-check-circle text-gold me-2"></i> Liderazgo de siervo perfeccionador</li>
+            <li class="mb-2"><i class="fas fa-check-circle text-gold me-2"></i> Capacidad de trabajo en equipo</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <h3 class="font-serif mb-4"><i class="fas fa-crown text-gold me-2"></i>Rectores Históricos</h3>
+        <div class="p-4 bg-white rounded-4 shadow-sm">
+          <p>Desde su fundación, el Seminario ha sido guiado por siervos fieles. Destacamos al <strong>Rev. Francisco Obdulio Álvarez Cantillo</strong>, quien estudió en "Los Pinos Nuevos" y posteriormente sirvió como Rector-Capellán de nuestra institución.</p>
+          <hr class="my-4">
+          <h5 class="mb-3">Rector Actual</h5>
+          <div class="d-flex align-items-center">
+            <div class="avatar-circle me-3" style="width: 60px; height: 60px;">JG</div>
+            <div>
+              <h6 class="mb-0">MA. Joel Gutiérrez Cabrera</h6>
+              <p class="text-muted mb-0">Rector · Griego I y II</p>
+              <small>joelgc242@gmail.com</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECCIÓN: GALERÍA DE ARCHIVO -->
+<section class="py-5">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="text-gold fw-bold text-uppercase small">Memoria Visual</span>
+      <h2 class="display-5 font-serif">Galería de <span class="text-teal">Archivo Histórico</span></h2>
+      <div class="divider mx-auto"></div>
+    </div>
+    
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+        <div class="gallery-vintage">
+          <a href="https://images.pexels.com/photos/261763/pexels-photo-261763.jpeg?auto=compress&cs=tinysrgb&w=1200" data-lightbox="historia" data-title="Primer edificio del Seminario (1951)">
+            <img src="https://images.pexels.com/photos/261763/pexels-photo-261763.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Edificio histórico">
+          </a>
+          <div class="p-3 bg-white">
+            <h6 class="mb-0">Edificio original en La Caoba</h6>
+            <small class="text-muted">Dedicado el 10 de octubre de 1951</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+        <div class="gallery-vintage">
+          <a href="https://images.pexels.com/photos/3723267/pexels-photo-3723267.jpeg?auto=compress&cs=tinysrgb&w=1200" data-lightbox="historia" data-title="Estudiantes en los primeros años">
+            <img src="https://images.pexels.com/photos/3723267/pexels-photo-3723267.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Primeros estudiantes">
+          </a>
+          <div class="p-3 bg-white">
+            <h6 class="mb-0">Primera generación de estudiantes</h6>
+            <small class="text-muted">Curso 1949-1950</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
+        <div class="gallery-vintage">
+          <a href="https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=1200" data-lightbox="historia" data-title="Capilla del Seminario">
+            <img src="https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Capilla">
+          </a>
+          <div class="p-3 bg-white">
+            <h6 class="mb-0">Capilla del Seminario</h6>
+            <small class="text-muted">Corazón espiritual de la institución</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-center mt-5" data-aos="fade-up">
+      <p class="text-muted">Actas originales y documentos históricos disponibles en el archivo físico del Seminario.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECCIÓN: LLAMADO A LA ACCIÓN -->
+<section class="py-5 bg-teal text-white">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-lg-8 mx-auto" data-aos="fade-up">
+        <i class="fas fa-hands-praying fa-4x text-gold mb-4"></i>
+        <h2 class="display-5 font-serif mb-4">Sé Parte de Esta Historia</h2>
+        <p class="lead mb-4 opacity-90">Dios sigue llamando a hombres y mujeres para Su obra. ¿Serás tú parte de la próxima generación de líderes formados en La Caoba?</p>
+        <div class="d-flex gap-3 justify-content-center flex-wrap">
+          <a href="admisiones.html" class="btn btn-gold btn-lg rounded-pill px-5 py-3">
+            <i class="fas fa-graduation-cap me-2"></i>Iniciar Proceso de Admisión
+          </a>
+          <a href="contacto.html" class="btn btn-outline-light btn-lg rounded-pill px-5 py-3">
+            <i class="fas fa-envelope me-2"></i>Solicitar Más Información
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <i class="fas fa-cross fa-2x text-gold mb-3"></i>
+        <p class="opacity-75">Formando pastores y líderes cristianos para la edificación del pueblo de Dios desde 1949.</p>
+        <p class="small opacity-50 mt-3">Bajo los auspicios de la Convención Bautista de Cuba Oriental</p>
+      </div>
+      <div class="col-lg-2 col-md-4 mb-4">
+        <h5 class="text-gold">Enlaces</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="index.html" class="text-white-50 text-decoration-none">Inicio</a></li>
+          <li class="mb-2"><a href="admisiones.html" class="text-white-50 text-decoration-none">Admisiones</a></li>
+          <li class="mb-2"><a href="docentes.html" class="text-white-50 text-decoration-none">Docentes</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-4 mb-4">
+        <h5 class="text-gold">Recursos</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="login-intranet.html" class="text-white-50 text-decoration-none">Aula Virtual</a></li>
+          <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Biblioteca</a></li>
+          <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Calendario</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-4 mb-4">
+        <h5 class="text-gold">Apoya el Legado</h5>
+        <p class="opacity-75 small">Tu ofrenda continúa la visión de la Brigada del Centavo Diario.</p>
+        <a href="#" class="btn btn-gold btn-sm rounded-pill px-4">Donar Ahora</a>
+      </div>
+    </div>
+    <hr class="opacity-25 my-4">
+    <div class="row">
+      <div class="col text-center">
+        <p class="small opacity-50 mb-0">&copy; 2024 Seminario Teológico Bautista de Cuba Oriental. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
 <script src="js/main.js"></script>
-<script>AOS.init();</script>
-<style>.year-badge { font-family: 'Cormorant Garamond'; font-size: 2.5rem; color: var(--primary-sacred-gold); font-weight: bold; } .timeline-row { border-bottom: 1px solid #ddd; padding: 30px 0; }</style>
+<script>
+  AOS.init({ duration: 1000, once: true });
+  
+  // Configuración de Lightbox
+  lightbox.option({
+    'resizeDuration': 200,
+    'wrapAround': true,
+    'albumLabel': 'Imagen %1 de %2',
+    'fadeDuration': 300,
+    'imageFadeDuration': 300
+  });
+</script>
 </body>
 </html>

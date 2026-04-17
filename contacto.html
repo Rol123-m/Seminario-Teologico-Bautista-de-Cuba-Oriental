@@ -3,51 +3,507 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contacto · STBCOR</title>
+  <title>Contacto · Seminario Teológico Bautista</title>
+  
+  <!-- Bootstrap 5 + Iconos -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Fuentes Premium -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Librerías CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  
+  <!-- Estilos Propios -->
   <link rel="stylesheet" href="css/main.css">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=Inter&display=swap" rel="stylesheet">
+  
+  <style>
+    .contact-card {
+      background: white;
+      border-radius: 24px;
+      padding: 30px;
+      box-shadow: var(--shadow-soft);
+      transition: var(--transition-smooth);
+      height: 100%;
+    }
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+    .contact-icon-large {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(145deg, var(--primary-deep-teal), #2a5a4f);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .directory-card {
+      background: white;
+      border-radius: 16px;
+      padding: 15px 20px;
+      margin-bottom: 10px;
+      border-left: 4px solid var(--primary-sacred-gold);
+      transition: var(--transition-smooth);
+    }
+    .directory-card:hover {
+      background: var(--primary-deep-teal);
+      color: white;
+      transform: translateX(5px);
+    }
+    .directory-card:hover .text-muted {
+      color: rgba(255,255,255,0.7) !important;
+    }
+    .directory-card:hover a {
+      color: var(--primary-sacred-gold) !important;
+    }
+    .social-link-large {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 55px;
+      height: 55px;
+      background: var(--primary-deep-teal);
+      color: white;
+      border-radius: 18px;
+      margin-right: 12px;
+      transition: var(--transition-bounce);
+      font-size: 1.4rem;
+    }
+    .social-link-large:hover {
+      background: var(--primary-sacred-gold);
+      color: var(--primary-deep-teal);
+      transform: translateY(-5px) scale(1.05);
+    }
+    .map-container {
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: var(--shadow-hover);
+      border: 5px solid white;
+    }
+    .copy-email-btn {
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+    .copy-email-btn:hover {
+      color: var(--primary-sacred-gold) !important;
+    }
+    .toast-custom {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--primary-deep-teal);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 50px;
+      box-shadow: var(--shadow-hover);
+      z-index: 9999;
+      display: none;
+    }
+  </style>
 </head>
 <body>
 
+<!-- NAVBAR FLOTANTE -->
 <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
   <div class="container">
-    <a class="navbar-brand" href="index.html"><i class="fas fa-cross text-gold me-2"></i><span class="fw-bold">Seminario Teológico Bautista <br><small>Cuba Oriental</small></span></a>
-    <div class="collapse navbar-collapse"><ul class="navbar-nav mx-auto"><li class="nav-item"><a class="nav-link" href="index.html">INICIO</a></li><li class="nav-item"><a class="nav-link active" href="contacto.html">CONTACTO</a></li></ul></div>
+    <a class="navbar-brand" href="index.html">
+      <i class="fas fa-cross text-gold me-2"></i>
+      <span class="fw-bold">Seminario Teológico Bautista <br><small>Cuba Oriental</small></span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarMain">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="index.html">INICIO</a></li>
+        <li class="nav-item"><a class="nav-link" href="historia-completa.html">CONÓCENOS</a></li>
+        <li class="nav-item"><a class="nav-link" href="admisiones.html">ADMISIONES</a></li>
+        <li class="nav-item"><a class="nav-link" href="docentes.html">COMUNIDAD</a></li>
+        <li class="nav-item"><a class="nav-link active" href="contacto.html">CONTACTO</a></li>
+      </ul>
+      <div class="d-flex gap-2">
+        <a href="#" class="btn btn-outline-gold rounded-pill">DONAR</a>
+        <a href="login-intranet.html" class="btn btn-brick rounded-pill">AULA VIRTUAL</a>
+      </div>
+    </div>
   </div>
 </nav>
 
-<section class="py-7 mt-5">
+<!-- HERO SECTION -->
+<header class="py-7 bg-teal text-white mt-5 position-relative overflow-hidden">
+  <div class="position-absolute top-0 end-0 opacity-10">
+    <i class="fas fa-map-pin fa-10x"></i>
+  </div>
+  <div class="container py-5 text-center position-relative">
+    <span class="badge bg-gold text-dark mb-3 px-4 py-2 rounded-pill" data-aos="fade-down">
+      <i class="fas fa-location-dot me-2"></i>Km 13½ Carretera Central
+    </span>
+    <h1 class="display-3 font-serif" data-aos="fade-up">Visítanos en La Caoba</h1>
+    <p class="lead mb-0" data-aos="fade-up" data-aos-delay="100">Estamos aquí para servirte y acompañarte en tu llamado</p>
+  </div>
+</header>
+
+<!-- SECCIÓN: TARJETAS DE CONTACTO RÁPIDO -->
+<section class="py-5">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-5">
-        <h2 class="font-serif">Contáctanos</h2>
-        <div class="contact-info-item d-flex mb-4"><div class="contact-icon me-3"><i class="fas fa-map-marker-alt fa-2x text-gold"></i></div><div><h5>Dirección</h5><p>Carretera Central Km 13½, Apartado 542, La Caoba, Santiago de Cuba 90100</p></div></div>
-        <div class="contact-info-item d-flex mb-4"><div class="contact-icon me-3"><i class="fas fa-phone-alt fa-2x text-gold"></i></div><div><h5>Teléfono</h5><p>+53 22 61 23 45</p></div></div>
-        <div class="contact-info-item d-flex mb-4"><div class="contact-icon me-3"><i class="fas fa-envelope fa-2x text-gold"></i></div><div><h5>Correo</h5><p>secdocestbcor@gmail.com</p></div></div>
-        
-        <h4 class="mt-5">Directorio Administrativo</h4>
-        <ul class="list-unstyled">
-          <li><strong>Rector:</strong> MA. Joel Gutiérrez - joelgc242@gmail.com</li>
-          <li><strong>Vicerrector:</strong> Ms. Alsuby Alba - mifamiia.cuba@gmail.com</li>
-          <li><strong>Capellán:</strong> Diorlis Hernández - diorlis@nauta.cu / 58056621</li>
-          <li><strong>Decano:</strong> Addiel Rodríguez - addiel689@nauta.cu / 51901150</li>
-          <li><strong>Administrador:</strong> Eddy Borrero - edyborrerofernandez@gmail.com / 53402503</li>
-          <li><strong>Secretaria Docente:</strong> Damayanti Sánchez - dsanchezduharte@gmail.com / 54809519</li>
-        </ul>
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="contact-card text-center">
+          <div class="contact-icon-large mx-auto">
+            <i class="fas fa-map-marker-alt fa-2x text-gold"></i>
+          </div>
+          <h4 class="font-serif mb-3">Dirección Física</h4>
+          <p class="mb-1">Carretera Central Km 13½</p>
+          <p class="mb-1">Apartado 542</p>
+          <p class="mb-3">La Caoba, Santiago de Cuba 90100</p>
+          <a href="https://maps.google.com/?q=20.0531234,-75.8256789" target="_blank" class="btn btn-outline-teal rounded-pill btn-sm">
+            <i class="fas fa-directions me-1"></i> Cómo llegar
+          </a>
+        </div>
       </div>
-      <div class="col-lg-7">
-        <div class="map-wrapper rounded-4 overflow-hidden shadow-lg">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3753.405823456789!2d-75.8256789!3d20.0531234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDAzJzExLjMiTiA3NcKwNDknMzIuNCJX!5e0!3m2!1ses!2scu!4v1620000000000!5m2!1ses!2scu" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="contact-card text-center">
+          <div class="contact-icon-large mx-auto">
+            <i class="fas fa-phone-alt fa-2x text-gold"></i>
+          </div>
+          <h4 class="font-serif mb-3">Teléfono Principal</h4>
+          <p class="mb-2 display-6 text-teal">+53 22 61 23 45</p>
+          <p class="text-muted small mb-3">Lunes a Viernes · 8:00 AM - 4:00 PM</p>
+          <a href="tel:+5322612345" class="btn btn-outline-teal rounded-pill btn-sm">
+            <i class="fas fa-phone me-1"></i> Llamar ahora
+          </a>
+        </div>
+      </div>
+      
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="contact-card text-center">
+          <div class="contact-icon-large mx-auto">
+            <i class="fas fa-envelope fa-2x text-gold"></i>
+          </div>
+          <h4 class="font-serif mb-3">Correo Electrónico</h4>
+          <p class="mb-2">secdocestbcor@gmail.com</p>
+          <p class="text-muted small mb-3">Respondemos en 24-48 horas</p>
+          <button class="btn btn-outline-teal rounded-pill btn-sm copy-email-btn" data-email="secdocestbcor@gmail.com">
+            <i class="far fa-copy me-1"></i> Copiar correo
+          </button>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<footer class="bg-dark text-white py-4"><div class="container text-center"><p>&copy; 2024 Seminario Teológico Bautista de Cuba Oriental</p></div></footer>
+<!-- SECCIÓN: MAPA Y FORMULARIO -->
+<section class="py-5 bg-light-sage">
+  <div class="container">
+    <div class="row g-5">
+      <!-- Columna Izquierda: Mapa y Ubicación -->
+      <div class="col-lg-7" data-aos="fade-right">
+        <h3 class="font-serif mb-4"><i class="fas fa-map me-2 text-gold"></i>Nuestra Ubicación</h3>
+        
+        <div class="map-container">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3753.405823456789!2d-75.8256789!3d20.0531234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDAzJzExLjMiTiA3NcKwNDknMzIuNCJX!5e0!3m2!1ses!2scu!4v1620000000000!5m2!1ses!2scu" 
+            width="100%" 
+            height="400" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy">
+          </iframe>
+        </div>
+        
+        <div class="row mt-4 g-3">
+          <div class="col-sm-6">
+            <div class="p-3 bg-white rounded-4 shadow-sm">
+              <i class="fas fa-bus text-gold mb-2"></i>
+              <h6 class="mb-1">Transporte Público</h6>
+              <p class="small text-muted mb-0">Rutas de ómnibus desde Santiago de Cuba y El Cobre. Parada frente al Seminario.</p>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="p-3 bg-white rounded-4 shadow-sm">
+              <i class="fas fa-church text-gold mb-2"></i>
+              <h6 class="mb-1">Puntos de Referencia</h6>
+              <p class="small text-muted mb-0">A 7½ km del Poblado de El Cobre (Santuario de la Virgen de la Caridad).</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Redes Sociales -->
+        <div class="mt-5">
+          <h5 class="font-serif mb-3">Síguenos en Redes</h5>
+          <div>
+            <a href="#" class="social-link-large"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link-large"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link-large"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-link-large"><i class="fab fa-whatsapp"></i></a>
+          </div>
+          <p class="small text-muted mt-3">
+            <i class="fas fa-globe me-1"></i> Boletines y noticias periódicas disponibles en nuestras redes.
+          </p>
+        </div>
+      </div>
+      
+      <!-- Columna Derecha: Formulario de Contacto -->
+      <div class="col-lg-5" data-aos="fade-left">
+        <div class="card shadow-lg border-0 rounded-4 bg-white">
+          <div class="card-body p-4 p-lg-5">
+            <h3 class="font-serif mb-4">Envíanos un Mensaje</h3>
+            <p class="text-muted mb-4">Completa el formulario y te responderemos a la brevedad.</p>
+            
+            <form id="contactForm">
+              <div class="mb-3">
+                <label class="form-label fw-semibold">Nombre Completo <span class="text-brick">*</span></label>
+                <input type="text" class="form-control form-control-immersive w-100" placeholder="Ej. María Pérez Rodríguez" required>
+              </div>
+              
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label fw-semibold">Correo Electrónico <span class="text-brick">*</span></label>
+                  <input type="email" class="form-control form-control-immersive w-100" placeholder="correo@ejemplo.com" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label fw-semibold">Teléfono</label>
+                  <input type="tel" class="form-control form-control-immersive w-100" placeholder="+53">
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <label class="form-label fw-semibold">Iglesia Local (si aplica)</label>
+                <input type="text" class="form-control form-control-immersive w-100" placeholder="Nombre de tu iglesia">
+              </div>
+              
+              <div class="mb-3">
+                <label class="form-label fw-semibold">Asunto <span class="text-brick">*</span></label>
+                <select class="form-select form-control-immersive w-100" required>
+                  <option value="" selected disabled>Selecciona un motivo</option>
+                  <option value="admisiones">Información sobre Admisiones</option>
+                  <option value="programas">Consulta sobre Programas Académicos</option>
+                  <option value="docentes">Contactar a un Docente</option>
+                  <option value="administracion">Asunto Administrativo</option>
+                  <option value="otro">Otro</option>
+                </select>
+              </div>
+              
+              <div class="mb-4">
+                <label class="form-label fw-semibold">Mensaje <span class="text-brick">*</span></label>
+                <textarea class="form-control form-control-immersive w-100" rows="4" placeholder="Escribe tu mensaje aquí..." required></textarea>
+              </div>
+              
+              <button type="submit" class="btn btn-teal w-100 rounded-pill py-3">
+                <i class="fas fa-paper-plane me-2"></i>Enviar Mensaje
+              </button>
+              
+              <p class="small text-muted text-center mt-3 mb-0">
+                <i class="fas fa-clock me-1"></i> Tiempo estimado de respuesta: 24-48 horas hábiles.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECCIÓN: DIRECTORIO ADMINISTRATIVO COMPLETO -->
+<section class="py-5 bg-cream">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="text-gold fw-bold text-uppercase small">Contacto Directo</span>
+      <h2 class="display-5 font-serif">Directorio <span class="text-teal">Administrativo</span></h2>
+      <div class="divider mx-auto"></div>
+      <p class="lead text-muted">Puedes contactar directamente a cualquier miembro de nuestro equipo</p>
+    </div>
+    
+    <div class="row g-4">
+      <!-- Columna 1 -->
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="directory-card">
+          <h5 class="mb-1">MA. Joel Gutiérrez Cabrera</h5>
+          <p class="text-gold fw-semibold mb-2">Rector</p>
+          <p class="small mb-1"><i class="fas fa-envelope me-2"></i><a href="mailto:joelgc242@gmail.com" class="text-muted text-decoration-none">joelgc242@gmail.com</a></p>
+          <p class="small mb-0"><i class="fas fa-chalkboard-teacher me-2"></i>Griego I y II</p>
+        </div>
+        
+        <div class="directory-card">
+          <h5 class="mb-1">Ms. Alsuby Alba Regalado</h5>
+          <p class="text-gold fw-semibold mb-2">Vicerrector</p>
+          <p class="small mb-1"><i class="fas fa-envelope me-2"></i><a href="mailto:mifamiia.cuba@gmail.com" class="text-muted text-decoration-none">mifamiia.cuba@gmail.com</a></p>
+          <p class="small mb-0"><i class="fas fa-chalkboard-teacher me-2"></i>Metodología de la Investigación</p>
+        </div>
+        
+        <div class="directory-card">
+          <h5 class="mb-1">MA. Amado Ramírez Oliveros</h5>
+          <p class="text-gold fw-semibold mb-2">Preparación Ministerial</p>
+          <p class="small mb-1"><i class="fas fa-envelope me-2"></i><a href="mailto:amadoyude@gmail.com" class="text-muted text-decoration-none">amadoyude@gmail.com</a></p>
+          <p class="small mb-1"><i class="fas fa-phone me-2"></i>53737647</p>
+          <p class="small mb-0"><i class="fas fa-chalkboard-teacher me-2"></i>Homilética</p>
+        </div>
+        
+        <div class="directory-card">
+          <h5 class="mb-1">Diorlis Hernández Hernández</h5>
+          <p class="text-gold fw-semibold mb-2">Capellán</p>
+          <p class="small mb-1"><i class="fas fa-envelope me-2"></i><a href="mailto:diorlis@nauta.cu" class="text-muted text-decoration-none">diorlis@nauta.cu</a></p>
+          <p class="small mb-1"><i class="fas fa-phone me-2"></i>58056621</p>
+          <p class="small mb-0"><i class="fas fa-chalkboard-teacher me-2"></i>Historia y Principios Bautistas</p>
+        </div>
+      </div>
+      
+      <!-- Columna 2 -->
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="directory-card">
+          <h5 class="mb-1">Addiel Rodríguez Hernández</h5>
+          <p class="text-gold fw-semibold mb-2">Decano</p>
+          <p class="small mb-1"><i class="fas fa-envelope me-2"></i><a href="mailto:addiel689@nauta.cu" class="text-muted text-decoration-none">addiel689@nauta.cu</a></p>
+          <p class="small mb-1"><i class="fas fa-phone me-2"></i>51901150</p>
+          <p class="small mb-0"><i class="fas fa-chalkboard-teacher me-2"></i>Cristología</p>
+        </div>
+        
+        <div class="directory-card">
+          <h5 class="mb-1">Eddy Borrero Fernández</h5>
+          <p class="text-gold fw-semibold mb-2">Administrador</p>
+          <p class="small mb-1"><i class="fas fa-envelope me-2"></i><a href="mailto:edyborrerofernandez@gmail.com" class="text-muted text-decoration-none">edyborrerofernandez@gmail.com</a></p>
+          <p class="small mb-0"><i class="fas fa-phone me-2"></i>53402503</p>
+        </div>
+        
+        <div class="directory-card">
+          <h5 class="mb-1">Mariolis García Galindo</h5>
+          <p class="text-gold fw-semibold mb-2">Directora Interna</p>
+          <p class="small mb-0"><i class="fas fa-home me-2"></i>Residencias Estudiantiles</p>
+        </div>
+        
+        <div class="directory-card">
+          <h5 class="mb-1">MA. Vitalia de la Torre Ayala</h5>
+          <p class="text-gold fw-semibold mb-2">Directora Centros Bíblicos</p>
+          <p class="small mb-1"><i class="fas fa-envelope me-2"></i><a href="mailto:vitaliadelatorreayala@gmail.com" class="text-muted text-decoration-none">vitaliadelatorreayala@gmail.com</a></p>
+          <p class="small mb-0"><i class="fas fa-chalkboard-teacher me-2"></i>Metodología de la Enseñanza</p>
+        </div>
+      </div>
+      
+      <!-- Columna 3 -->
+      <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="directory-card">
+          <h5 class="mb-1">Damayanti Sánchez Duharte</h5>
+          <p class="text-gold fw-semibold mb-2">Secretaria Docente</p>
+          <p class="small mb-1"><i class="fas fa-envelope me-2"></i><a href="mailto:dsanchezduharte@gmail.com" class="text-muted text-decoration-none">dsanchezduharte@gmail.com</a></p>
+          <p class="small mb-0"><i class="fas fa-phone me-2"></i>54809519</p>
+        </div>
+        
+        <div class="directory-card">
+          <h5 class="mb-1">Yeni Evelia Yirat Zapata</h5>
+          <p class="text-gold fw-semibold mb-2">Secretaria Procesadora de Datos</p>
+          <p class="small mb-0"><i class="fas fa-phone me-2"></i>53842068</p>
+        </div>
+        
+        <div class="directory-card">
+          <h5 class="mb-1">Zoe Del Rio Matos</h5>
+          <p class="text-gold fw-semibold mb-2">Secretaria Centros Bíblicos</p>
+        </div>
+        
+        <div class="directory-card bg-teal text-white" style="border-left-color: var(--primary-sacred-gold);">
+          <h5 class="mb-1"><i class="fas fa-server me-2"></i>Información Técnica</h5>
+          <p class="small mb-1 opacity-90">Servidor: Windows Server 2022</p>
+          <p class="small mb-0 opacity-75">Soporte técnico: Contactar a Administración</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Nota sobre contacto -->
+    <div class="row mt-5">
+      <div class="col-12">
+        <div class="alert alert-light border-0 rounded-4 p-4 shadow-sm text-center" data-aos="fade-up">
+          <i class="fas fa-clock text-gold fa-2x mb-3"></i>
+          <h5 class="font-serif">Horario de Atención</h5>
+          <p class="mb-0">Lunes a Viernes: 8:00 AM - 4:00 PM | Sábados: 9:00 AM - 12:00 PM (Solo eventos programados) | Domingos: Cerrado</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOAST DE CONFIRMACIÓN -->
+<div id="copyToast" class="toast-custom">
+  <i class="fas fa-check-circle me-2"></i> ¡Correo copiado al portapapeles!
+</div>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <i class="fas fa-cross fa-2x text-gold mb-3"></i>
+        <p class="opacity-75">Formando pastores y líderes cristianos para la edificación del pueblo de Dios desde 1949.</p>
+        <p class="small opacity-50 mt-3">Bajo los auspicios de la Convención Bautista de Cuba Oriental</p>
+      </div>
+      <div class="col-lg-2 col-md-4 mb-4">
+        <h5 class="text-gold">Enlaces</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="index.html" class="text-white-50 text-decoration-none">Inicio</a></li>
+          <li class="mb-2"><a href="admisiones.html" class="text-white-50 text-decoration-none">Admisiones</a></li>
+          <li class="mb-2"><a href="docentes.html" class="text-white-50 text-decoration-none">Docentes</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-4 mb-4">
+        <h5 class="text-gold">Recursos</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="login-intranet.html" class="text-white-50 text-decoration-none">Aula Virtual</a></li>
+          <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Biblioteca</a></li>
+          <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Calendario</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-4 mb-4">
+        <h5 class="text-gold">Contacto Rápido</h5>
+        <p class="opacity-75 small">Carretera Central Km 13½, La Caoba<br>Santiago de Cuba 90100</p>
+        <p class="opacity-75 small">+53 22 61 23 45<br>secdocestbcor@gmail.com</p>
+        <a href="#" class="btn btn-gold btn-sm rounded-pill px-4 mt-2">Donar Ahora</a>
+      </div>
+    </div>
+    <hr class="opacity-25 my-4">
+    <div class="row">
+      <div class="col-md-6">
+        <p class="small opacity-50 mb-0">&copy; 2026 Seminario Teológico Bautista de Cuba Oriental.</p>
+      </div>
+      <div class="col-md-6 text-md-end">
+        <p class="small opacity-50 mb-0">Todos los derechos reservados</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script src="js/main.js"></script>
+<script>
+  AOS.init({ duration: 1000, once: true });
+  
+  // Funcionalidad para copiar correo
+  document.querySelectorAll('.copy-email-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const email = this.dataset.email;
+      navigator.clipboard?.writeText(email).then(() => {
+        const toast = document.getElementById('copyToast');
+        toast.style.display = 'block';
+        setTimeout(() => {
+          toast.style.display = 'none';
+        }, 2000);
+      }).catch(() => {
+        alert('Correo: ' + email);
+      });
+    });
+  });
+  
+  // Manejo del formulario de contacto
+  document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.');
+    this.reset();
+  });
+</script>
 </body>
 </html>
