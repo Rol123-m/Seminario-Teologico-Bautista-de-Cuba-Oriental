@@ -76,16 +76,24 @@
   </div>
 </nav>
 
-<!-- HERO SECTION -->
+<!-- HERO SECTION (CORREGIDO) -->
 <header class="hero vh-100 d-flex align-items-center position-relative overflow-hidden">
   <div class="hero-background position-absolute w-100 h-100">
-    <img src="<img src="https://images.pexels.com/photos/1450360/pexels-photo-1450360.jpeg?auto=compress&cs=tinysrgb&w=1920" 
-     alt="Paisaje tropical cubano" 
-     class="w-100 h-100 object-fit-cover">" alt="Seminario Bautista Cuba" class="w-100 h-100 object-fit-cover">
-    <div class="overlay position-absolute w-100 h-100" style="background: linear-gradient(135deg, rgba(26,60,52,0.85) 0%, rgba(0,0,0,0.6) 100%);"></div>
+    <!-- IMAGEN CORREGIDA: Paisaje tropical con cielo despejado -->
+    <img src="https://images.pexels.com/photos/1450360/pexels-photo-1450360.jpeg?auto=compress&cs=tinysrgb&w=1920" 
+         alt="Paisaje tropical cubano" 
+         class="w-100 h-100 object-fit-cover">
+    
+    <!-- OVERLAY DE ALTO CONTRASTE (Doble capa para máxima legibilidad) -->
+    <div class="position-absolute w-100 h-100" 
+         style="background: rgba(26, 60, 52, 0.65); backdrop-filter: blur(2px); z-index: 1;">
+    </div>
+    <div class="position-absolute w-100 h-100" 
+         style="background: radial-gradient(circle at 30% 40%, transparent 0%, rgba(0,0,0,0.5) 100%); z-index: 2;">
+    </div>
   </div>
   
-  <div class="container position-relative text-white" data-aos="fade-up" data-aos-duration="1200">
+  <div class="container position-relative text-white" style="z-index: 5;" data-aos="fade-up" data-aos-duration="1200">
     <div class="row">
       <div class="col-lg-8 mx-auto text-center">
         <span class="badge bg-gold text-dark mb-4 px-4 py-2 rounded-pill">
@@ -170,7 +178,7 @@
             <span class="value-tag">Excelencia</span>
           </div>
           <button class="btn btn-outline-teal rounded-pill mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#allValues">
-            Ver todos
+            Ver todos <i class="fas fa-chevron-down ms-1"></i>
           </button>
           <div class="card-decoration"></div>
         </div>
@@ -178,7 +186,7 @@
     </div>
 
     <!-- Grid completo de valores -->
-    <div class="collapse mt-4" id="allValues">
+    <div class="collapse mt-5" id="allValues">
       <div class="row g-3">
         <div class="col-md-3 col-6"><div class="value-item p-3 bg-white rounded-3 shadow-sm h-100"><i class="fas fa-praying-hands text-gold mb-2"></i><h5>Intimidad con DIOS</h5></div></div>
         <div class="col-md-3 col-6"><div class="value-item p-3 bg-white rounded-3 shadow-sm h-100"><i class="fas fa-heart text-gold mb-2"></i><h5>Carácter Integral</h5></div></div>
@@ -250,8 +258,22 @@
           </div>
           <div class="col-lg-6">
             <div class="row g-4">
-              <div class="col-12" data-aos="zoom-in" data-aos-delay="100"><div class="program-card"><div class="program-content p-4"><h4>Ministerio con Niños</h4><p>Educación cristiana infantil y desarrollo espiritual en la niñez.</p></div></div></div>
-              <div class="col-12" data-aos="zoom-in" data-aos-delay="200"><div class="program-card osco-special p-4"><span class="badge bg-gold text-dark mb-2">Programa Único</span><h3>OSCO - Oídos Sordos, Corazones Oyentes</h3><p>Formación especializada para el ministerio con la comunidad sorda.</p></div></div>
+              <div class="col-12" data-aos="zoom-in" data-aos-delay="100">
+                <div class="program-card">
+                  <div class="program-content p-4">
+                    <h4><i class="fas fa-child text-gold me-2"></i>Ministerio con Niños</h4>
+                    <p>Educación cristiana infantil y desarrollo espiritual en la niñez.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12" data-aos="zoom-in" data-aos-delay="200">
+                <div class="program-card osco-special p-4">
+                  <span class="badge bg-gold text-dark mb-2">Programa Único en Cuba</span>
+                  <h3><i class="fas fa-hands text-gold me-2"></i>OSCO</h3>
+                  <p class="fw-bold">Oídos Sordos, Corazones Oyentes</p>
+                  <p>Formación especializada para el ministerio con la comunidad sorda.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -288,9 +310,9 @@
       </div>
       <div class="col-lg-6" data-aos="fade-left">
         <div class="vintage-gallery-grid">
-          <div class="gallery-item large"><img src="https://images.pexels.com/photos/261763/pexels-photo-261763.jpeg?auto=compress&cs=tinysrgb&w=600" class="img-fluid rounded-4 shadow"></div>
-          <div class="gallery-item"><img src="https://images.pexels.com/photos/3723267/pexels-photo-3723267.jpeg?auto=compress&cs=tinysrgb&w=600" class="img-fluid rounded-4 shadow"></div>
-          <div class="gallery-item"><img src="https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=600" class="img-fluid rounded-4 shadow"></div>
+          <div class="gallery-item large"><img src="https://images.pexels.com/photos/261763/pexels-photo-261763.jpeg?auto=compress&cs=tinysrgb&w=600" class="img-fluid rounded-4 shadow" alt="Edificio histórico"></div>
+          <div class="gallery-item"><img src="https://images.pexels.com/photos/3723267/pexels-photo-3723267.jpeg?auto=compress&cs=tinysrgb&w=600" class="img-fluid rounded-4 shadow" alt="Estudiantes"></div>
+          <div class="gallery-item"><img src="https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg?auto=compress&cs=tinysrgb&w=600" class="img-fluid rounded-4 shadow" alt="Capilla"></div>
         </div>
       </div>
     </div>
@@ -306,10 +328,10 @@
     </div>
     <div class="swiper campusSwiper" data-aos="fade-up">
       <div class="swiper-wrapper">
-        <div class="swiper-slide"><div class="campus-card"><img src="https://images.pexels.com/photos/256455/pexels-photo-256455.jpeg?auto=compress&cs=tinysrgb&w=600" class="campus-img"><div class="campus-overlay"><h4>Aulas y Biblioteca</h4></div></div></div>
-        <div class="swiper-slide"><div class="campus-card"><img src="https://images.pexels.com/photos/208636/pexels-photo-208636.jpeg?auto=compress&cs=tinysrgb&w=600" class="campus-img"><div class="campus-overlay"><h4>Capilla</h4></div></div></div>
-        <div class="swiper-slide"><div class="campus-card"><img src="https://images.pexels.com/photos/3723267/pexels-photo-3723267.jpeg?auto=compress&cs=tinysrgb&w=600" class="campus-img"><div class="campus-overlay"><h4>Áreas Verdes</h4></div></div></div>
-        <div class="swiper-slide"><div class="campus-card"><img src="https://images.pexels.com/photos/1370296/pexels-photo-1370296.jpeg?auto=compress&cs=tinysrgb&w=600" class="campus-img"><div class="campus-overlay"><h4>Laboratorio</h4></div></div></div>
+        <div class="swiper-slide"><div class="campus-card"><img src="https://images.pexels.com/photos/256455/pexels-photo-256455.jpeg?auto=compress&cs=tinysrgb&w=600" class="campus-img" alt="Biblioteca"><div class="campus-overlay"><h4>Aulas y Biblioteca</h4></div></div></div>
+        <div class="swiper-slide"><div class="campus-card"><img src="https://images.pexels.com/photos/208636/pexels-photo-208636.jpeg?auto=compress&cs=tinysrgb&w=600" class="campus-img" alt="Capilla"><div class="campus-overlay"><h4>Capilla</h4></div></div></div>
+        <div class="swiper-slide"><div class="campus-card"><img src="https://images.pexels.com/photos/3723267/pexels-photo-3723267.jpeg?auto=compress&cs=tinysrgb&w=600" class="campus-img" alt="Jardines"><div class="campus-overlay"><h4>Áreas Verdes</h4></div></div></div>
+        <div class="swiper-slide"><div class="campus-card"><img src="https://images.pexels.com/photos/1370296/pexels-photo-1370296.jpeg?auto=compress&cs=tinysrgb&w=600" class="campus-img" alt="Laboratorio"><div class="campus-overlay"><h4>Laboratorio de Computación</h4></div></div></div>
       </div>
       <div class="swiper-pagination"></div>
       <div class="swiper-button-next"></div>
@@ -331,23 +353,44 @@
       <div class="col-lg-4 mb-4">
         <i class="fas fa-cross fa-2x text-gold mb-3"></i>
         <p class="opacity-75">Formando pastores y líderes cristianos para la edificación del pueblo de Dios desde 1949.</p>
+        <div class="social-links mt-3">
+          <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-white me-3"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="text-white"><i class="fab fa-whatsapp"></i></a>
+        </div>
       </div>
       <div class="col-lg-2 col-md-4 mb-4">
         <h5 class="text-gold">Enlaces</h5>
-        <ul class="list-unstyled"><li><a href="index.html" class="text-white-50 text-decoration-none">Inicio</a></li><li><a href="admisiones.html" class="text-white-50 text-decoration-none">Admisiones</a></li><li><a href="docentes.html" class="text-white-50 text-decoration-none">Docentes</a></li></ul>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="index.html" class="text-white-50 text-decoration-none">Inicio</a></li>
+          <li class="mb-2"><a href="admisiones.html" class="text-white-50 text-decoration-none">Admisiones</a></li>
+          <li class="mb-2"><a href="docentes.html" class="text-white-50 text-decoration-none">Docentes</a></li>
+        </ul>
       </div>
       <div class="col-lg-3 col-md-4 mb-4">
         <h5 class="text-gold">Recursos</h5>
-        <ul class="list-unstyled"><li><a href="login-intranet.html" class="text-white-50 text-decoration-none">Aula Virtual</a></li><li><a href="#" class="text-white-50 text-decoration-none">Biblioteca</a></li><li><a href="#" class="text-white-50 text-decoration-none">Calendario</a></li></ul>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="login-intranet.html" class="text-white-50 text-decoration-none">Aula Virtual</a></li>
+          <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Biblioteca</a></li>
+          <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Calendario</a></li>
+        </ul>
       </div>
       <div class="col-lg-3 col-md-4 mb-4">
         <h5 class="text-gold">Apoya</h5>
         <p class="opacity-75 small">Tu ofrenda hace posible la formación de pastores para Cuba.</p>
-        <a href="#" class="btn btn-gold btn-sm rounded-pill">Donar</a>
+        <a href="#" class="btn btn-gold btn-sm rounded-pill px-4">Donar Ahora</a>
       </div>
     </div>
     <hr class="opacity-25 my-4">
-    <div class="row"><div class="col text-center"><p class="small opacity-50">&copy; 2024 Seminario Teológico Bautista de Cuba Oriental. Convención Bautista de Cuba Oriental.</p></div></div>
+    <div class="row">
+      <div class="col-md-6">
+        <p class="small opacity-50 mb-0">&copy; 2024 Seminario Teológico Bautista de Cuba Oriental.</p>
+      </div>
+      <div class="col-md-6 text-md-end">
+        <p class="small opacity-50 mb-0">Bajo los auspicios de la Convención Bautista de Cuba Oriental</p>
+      </div>
+    </div>
   </div>
 </footer>
 
@@ -359,13 +402,37 @@
 <script src="js/main.js"></script>
 <script>
   AOS.init({ duration: 1000, once: true });
-  const swiper = new Swiper('.campusSwiper', { slidesPerView: 1, spaceBetween: 20, loop: true, autoplay: { delay: 3000 }, pagination: { el: '.swiper-pagination', clickable: true }, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }, breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } } });
+  const swiper = new Swiper('.campusSwiper', { 
+    slidesPerView: 1, 
+    spaceBetween: 20, 
+    loop: true, 
+    autoplay: { delay: 3000, disableOnInteraction: false }, 
+    pagination: { el: '.swiper-pagination', clickable: true }, 
+    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }, 
+    breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } } 
+  });
   
   // Typing effect
   const strings = ['Formación Integral', 'Pastores conforme al corazón de Dios', 'Líderes para Su Reino'];
   let index = 0, charIndex = 0, isDeleting = false;
   const typingEl = document.getElementById('typing-effect');
-  function type() { const current = strings[index]; if (isDeleting) charIndex--; else charIndex++; typingEl.textContent = current.substring(0, charIndex); let speed = 100; if (isDeleting) speed /= 2; if (!isDeleting && charIndex === current.length) { speed = 2000; isDeleting = true; } else if (isDeleting && charIndex === 0) { isDeleting = false; index = (index + 1) % strings.length; speed = 500; } setTimeout(type, speed); }
+  function type() { 
+    const current = strings[index]; 
+    if (isDeleting) charIndex--; 
+    else charIndex++; 
+    typingEl.textContent = current.substring(0, charIndex); 
+    let speed = 100; 
+    if (isDeleting) speed /= 2; 
+    if (!isDeleting && charIndex === current.length) { 
+      speed = 2000; 
+      isDeleting = true; 
+    } else if (isDeleting && charIndex === 0) { 
+      isDeleting = false; 
+      index = (index + 1) % strings.length; 
+      speed = 500; 
+    } 
+    setTimeout(type, speed); 
+  } 
   type();
 </script>
 </body>

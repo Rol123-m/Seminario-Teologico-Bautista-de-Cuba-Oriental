@@ -4,18 +4,87 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Directorio de Docentes · STBCOR</title>
+  
+  <!-- Bootstrap 5 + Iconos -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Fuentes Premium -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Librerías CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  
+  <!-- Estilos Propios -->
   <link rel="stylesheet" href="css/main.css">
+  
+  <style>
+    /* Estilos adicionales para filtros y búsqueda */
+    .search-box {
+      border-radius: 50px;
+      padding: 12px 24px;
+      border: 2px solid rgba(0,0,0,0.05);
+      background: white;
+      font-size: 1rem;
+      transition: var(--transition-smooth);
+    }
+    .search-box:focus {
+      border-color: var(--primary-sacred-gold);
+      box-shadow: 0 0 0 4px rgba(196, 160, 53, 0.1);
+      outline: none;
+    }
+    .filter-btn {
+      border-radius: 50px;
+      padding: 8px 20px;
+      margin: 4px;
+      border: 1px solid var(--primary-deep-teal);
+      background: transparent;
+      color: var(--primary-deep-teal);
+      transition: var(--transition-smooth);
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--primary-deep-teal);
+      color: white;
+    }
+    .faculty-card {
+      transition: all 0.3s ease;
+    }
+    .faculty-card .avatar-circle {
+      transition: var(--transition-bounce);
+    }
+    .faculty-card:hover .avatar-circle {
+      transform: scale(1.05);
+      box-shadow: var(--shadow-hover);
+    }
+    .badge-materia {
+      background: rgba(26, 60, 52, 0.08);
+      color: var(--primary-deep-teal);
+      padding: 4px 10px;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      margin: 3px;
+      display: inline-block;
+    }
+    .section-header {
+      border-left: 6px solid var(--primary-sacred-gold);
+      padding-left: 20px;
+      margin-bottom: 30px;
+    }
+  </style>
 </head>
 <body>
 
+<!-- NAVBAR FLOTANTE -->
 <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
   <div class="container">
-    <a class="navbar-brand" href="index.html"><i class="fas fa-cross text-gold me-2"></i><span class="fw-bold">Seminario Teológico Bautista <br><small>Cuba Oriental</small></span></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"><span class="navbar-toggler-icon"></span></button>
+    <a class="navbar-brand" href="index.html">
+      <i class="fas fa-cross text-gold me-2"></i>
+      <span class="fw-bold">Seminario Teológico Bautista <br><small>Cuba Oriental</small></span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+      <span class="navbar-toggler-icon"></span>
+    </button>
     <div class="collapse navbar-collapse" id="navbarMain">
       <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
         <li class="nav-item"><a class="nav-link" href="index.html">INICIO</a></li>
@@ -24,52 +93,721 @@
         <li class="nav-item"><a class="nav-link active" href="docentes.html">COMUNIDAD</a></li>
         <li class="nav-item"><a class="nav-link" href="contacto.html">CONTACTO</a></li>
       </ul>
+      <div class="d-flex gap-2">
+        <a href="#" class="btn btn-outline-gold rounded-pill">DONAR</a>
+        <a href="login-intranet.html" class="btn btn-brick rounded-pill">AULA VIRTUAL</a>
+      </div>
     </div>
   </div>
 </nav>
 
+<!-- HEADER -->
 <header class="py-7 bg-light-sage mt-5">
   <div class="container py-5 text-center">
     <h1 class="display-3 font-serif" data-aos="fade-up">Nuestra Facultad</h1>
     <p class="lead" data-aos="fade-up" data-aos-delay="100">Hombres y mujeres de Dios comprometidos con la excelencia académica y espiritual</p>
-    <div class="row mt-4"><div class="col-md-4"><div class="stat"><h2>45+</h2><p>Docentes</p></div></div><div class="col-md-4"><div class="stat"><h2>3</h2><p>Doctores (PhD)</p></div></div><div class="col-md-4"><div class="stat"><h2>20+</h2><p>Másteres</p></div></div></div>
+    
+    <!-- Estadísticas -->
+    <div class="row mt-5 g-4">
+      <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="100">
+        <div class="stat-card p-3">
+          <i class="fas fa-users fa-2x text-gold mb-2"></i>
+          <h2 class="mb-0">46</h2>
+          <p class="text-muted mb-0">Docentes</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="150">
+        <div class="stat-card p-3">
+          <i class="fas fa-user-graduate fa-2x text-gold mb-2"></i>
+          <h2 class="mb-0">3</h2>
+          <p class="text-muted mb-0">Doctores (PhD)</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="200">
+        <div class="stat-card p-3">
+          <i class="fas fa-certificate fa-2x text-gold mb-2"></i>
+          <h2 class="mb-0">20+</h2>
+          <p class="text-muted mb-0">Másteres</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-6" data-aos="zoom-in" data-aos-delay="250">
+        <div class="stat-card p-3">
+          <i class="fas fa-book-open fa-2x text-gold mb-2"></i>
+          <h2 class="mb-0">50+</h2>
+          <p class="text-muted mb-0">Asignaturas</p>
+        </div>
+      </div>
+    </div>
   </div>
 </header>
 
+<!-- SECCIÓN PRINCIPAL -->
 <section class="py-5">
   <div class="container">
-    <h2 class="font-serif mb-4">Administración</h2>
-    <div class="row g-4 mb-5">
-      <div class="col-md-3"><div class="faculty-card text-center"><div class="avatar-circle">JG</div><h5>MA. Joel Gutiérrez</h5><p class="text-muted">Rector</p><small><i class="fas fa-envelope"></i> joelgc242@gmail.com</small></div></div>
-      <div class="col-md-3"><div class="faculty-card text-center"><div class="avatar-circle">AA</div><h5>Ms. Alsuby Alba</h5><p class="text-muted">Vicerrector</p><small>mifamiia.cuba@gmail.com</small></div></div>
-      <div class="col-md-3"><div class="faculty-card text-center"><div class="avatar-circle">DH</div><h5>Diorlis Hernández</h5><p class="text-muted">Capellán</p><small>diorlis@nauta.cu</small></div></div>
-      <div class="col-md-3"><div class="faculty-card text-center"><div class="avatar-circle">AR</div><h5>Addiel Rodríguez</h5><p class="text-muted">Decano</p><small>addiel689@nauta.cu</small></div></div>
-      <div class="col-md-3"><div class="faculty-card text-center"><div class="avatar-circle">AR</div><h5>MA. Amado Ramírez</h5><p class="text-muted">Prep. Ministerial</p><small>amadoyude@gmail.com</small></div></div>
-      <div class="col-md-3"><div class="faculty-card text-center"><div class="avatar-circle">EB</div><h5>Eddy Borrero</h5><p class="text-muted">Administrador</p><small>edyborrerofernandez@gmail.com</small></div></div>
-      <div class="col-md-3"><div class="faculty-card text-center"><div class="avatar-circle">VT</div><h5>MA. Vitalia de la Torre</h5><p class="text-muted">Dir. Centros Bíblicos</p><small>vitaliadelatorreayala@gmail.com</small></div></div>
-      <div class="col-md-3"><div class="faculty-card text-center"><div class="avatar-circle">DS</div><h5>Damayanti Sánchez</h5><p class="text-muted">Secretaria Docente</p><small>dsanchezduharte@gmail.com</small></div></div>
+    
+    <!-- Barra de Búsqueda y Filtros -->
+    <div class="row mb-5" data-aos="fade-up">
+      <div class="col-md-8 mx-auto">
+        <div class="search-wrapper">
+          <input type="text" id="searchInput" class="search-box w-100" placeholder="🔍 Buscar por nombre, materia o correo...">
+        </div>
+        <div class="filter-buttons text-center mt-3">
+          <button class="filter-btn active" data-filter="all">Todos</button>
+          <button class="filter-btn" data-filter="admin">Administración</button>
+          <button class="filter-btn" data-filter="doctor">Doctores</button>
+          <button class="filter-btn" data-filter="master">Másteres</button>
+          <button class="filter-btn" data-filter="lic">Licenciados</button>
+        </div>
+      </div>
     </div>
 
-    <h2 class="font-serif mb-4">Docentes Destacados</h2>
-    <div class="row g-4">
-      <!-- Se listan algunos representativos; en un proyecto real se listarían los 46 -->
-      <div class="col-md-3"><div class="faculty-card"><div class="avatar-circle">BW</div><h5>Dr. Bill Warren, PhD</h5><p>Parábolas, Literatura Juanina</p></div></div>
-      <div class="col-md-3"><div class="faculty-card"><div class="avatar-circle">LH</div><h5>Dr. Lloyd Harsh</h5><p>Historia del Cristianismo</p></div></div>
-      <div class="col-md-3"><div class="faculty-card"><div class="avatar-circle">DF</div><h5>Dra. Dailanis Figueroa</h5><p>Psicología Teológica</p></div></div>
-      <div class="col-md-3"><div class="faculty-card"><div class="avatar-circle">DR</div><h5>Ms. Dioelis Rodriguez</h5><p>Hebreo 1 y 2</p><small>drdelrio75@gmail.com</small></div></div>
-      <div class="col-md-3"><div class="faculty-card"><div class="avatar-circle">AS</div><h5>Lic. Acner Sánchez</h5><p>Hechos de los Apóstoles</p><small>acnersanchez79@gmail.com</small></div></div>
-      <div class="col-md-3"><div class="faculty-card"><div class="avatar-circle">ET</div><h5>MA. Edgardo Tamayo</h5><p>Doctrina del Espíritu Santo</p></div></div>
-      <div class="col-md-3"><div class="faculty-card"><div class="avatar-circle">GS</div><h5>MA. George Sotomayor</h5><p>Antropología</p></div></div>
-      <div class="col-md-3"><div class="faculty-card"><div class="avatar-circle">MR</div><h5>MSc. Manuel Remon</h5><p>Hermenéutica 1 y 2</p></div></div>
+    <!-- ============================================= -->
+    <!-- SECCIÓN: ADMINISTRACIÓN -->
+    <!-- ============================================= -->
+    <div class="section-header" data-aos="fade-right">
+      <h2 class="font-serif mb-0"><i class="fas fa-building me-2 text-gold"></i>Equipo Administrativo</h2>
     </div>
-    <p class="text-center mt-4"><i class="fas fa-info-circle"></i> El claustro completo incluye a más de 45 profesores, incluyendo especialistas desde La Habana y convenios internacionales.</p>
+    <div class="row g-4 mb-5" id="adminGrid">
+      
+      <!-- Rector -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="admin">
+        <div class="faculty-card text-center h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #1a3c34, #2a5a4f);">JG</div>
+          <h5 class="mt-3 mb-1">MA. Joel Gutiérrez Cabrera</h5>
+          <p class="text-gold fw-semibold mb-2">Rector</p>
+          <p class="small text-muted mb-2"><i class="fas fa-chalkboard-teacher me-1"></i>Griego I y II</p>
+          <p class="small"><i class="fas fa-envelope me-1"></i>joelgc242@gmail.com</p>
+          <a href="mailto:joelgc242@gmail.com" class="stretched-link"></a>
+        </div>
+      </div>
+      
+      <!-- Vicerrector -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="admin">
+        <div class="faculty-card text-center h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #8b6914, #a57e1a);">AA</div>
+          <h5 class="mt-3 mb-1">Ms. Alsuby Alba Regalado</h5>
+          <p class="text-gold fw-semibold mb-2">Vicerrector</p>
+          <p class="small text-muted mb-2"><i class="fas fa-chalkboard-teacher me-1"></i>Metodología de la Investigación</p>
+          <p class="small"><i class="fas fa-envelope me-1"></i>mifamiia.cuba@gmail.com</p>
+          <a href="mailto:mifamiia.cuba@gmail.com" class="stretched-link"></a>
+        </div>
+      </div>
+      
+      <!-- Preparación Ministerial -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="admin">
+        <div class="faculty-card text-center h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #8b3a3a, #a54a4a);">AR</div>
+          <h5 class="mt-3 mb-1">MA. Amado Ramírez Oliveros</h5>
+          <p class="text-gold fw-semibold mb-2">Prep. Ministerial</p>
+          <p class="small text-muted mb-2"><i class="fas fa-chalkboard-teacher me-1"></i>Homilética</p>
+          <p class="small"><i class="fas fa-envelope me-1"></i>amadoyude@gmail.com</p>
+          <p class="small"><i class="fas fa-phone me-1"></i>53737647</p>
+          <a href="mailto:amadoyude@gmail.com" class="stretched-link"></a>
+        </div>
+      </div>
+      
+      <!-- Capellán -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="admin">
+        <div class="faculty-card text-center h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #c4a035, #d4b045);">DH</div>
+          <h5 class="mt-3 mb-1">Diorlis Hernández Hernández</h5>
+          <p class="text-gold fw-semibold mb-2">Capellán</p>
+          <p class="small text-muted mb-2"><i class="fas fa-chalkboard-teacher me-1"></i>Historia y Principios Bautistas</p>
+          <p class="small"><i class="fas fa-envelope me-1"></i>diorlis@nauta.cu</p>
+          <p class="small"><i class="fas fa-phone me-1"></i>58056621</p>
+          <a href="mailto:diorlis@nauta.cu" class="stretched-link"></a>
+        </div>
+      </div>
+      
+      <!-- Decano -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="admin">
+        <div class="faculty-card text-center h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #1a3c34, #2a5a4f);">AR</div>
+          <h5 class="mt-3 mb-1">Addiel Rodríguez Hernández</h5>
+          <p class="text-gold fw-semibold mb-2">Decano</p>
+          <p class="small text-muted mb-2"><i class="fas fa-chalkboard-teacher me-1"></i>Cristología</p>
+          <p class="small"><i class="fas fa-envelope me-1"></i>addiel689@nauta.cu</p>
+          <p class="small"><i class="fas fa-phone me-1"></i>51901150</p>
+          <a href="mailto:addiel689@nauta.cu" class="stretched-link"></a>
+        </div>
+      </div>
+      
+      <!-- Administrador -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="admin">
+        <div class="faculty-card text-center h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #8b6914, #a57e1a);">EB</div>
+          <h5 class="mt-3 mb-1">Eddy Borrero Fernández</h5>
+          <p class="text-gold fw-semibold mb-2">Administrador</p>
+          <p class="small"><i class="fas fa-envelope me-1"></i>edyborrerofernandez@gmail.com</p>
+          <p class="small"><i class="fas fa-phone me-1"></i>53402503</p>
+          <a href="mailto:edyborrerofernandez@gmail.com" class="stretched-link"></a>
+        </div>
+      </div>
+      
+      <!-- Directora Interna -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="admin">
+        <div class="faculty-card text-center h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #8b3a3a, #a54a4a);">MG</div>
+          <h5 class="mt-3 mb-1">Mariolis García Galindo</h5>
+          <p class="text-gold fw-semibold mb-2">Directora Interna</p>
+          <p class="small text-muted"><i class="fas fa-home me-1"></i>Residencias Estudiantiles</p>
+        </div>
+      </div>
+      
+      <!-- Directora Centros Bíblicos -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="admin">
+        <div class="faculty-card text-center h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #c4a035, #d4b045);">VT</div>
+          <h5 class="mt-3 mb-1">MA. Vitalia de la Torre Ayala</h5>
+          <p class="text-gold fw-semibold mb-2">Dir. Centros Bíblicos</p>
+          <p class="small text-muted mb-2"><i class="fas fa-chalkboard-teacher me-1"></i>Metodología de la Enseñanza</p>
+          <p class="small"><i class="fas fa-envelope me-1"></i>vitaliadelatorreayala@gmail.com</p>
+          <a href="mailto:vitaliadelatorreayala@gmail.com" class="stretched-link"></a>
+        </div>
+      </div>
+      
+      <!-- Secretaria Docente -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="admin">
+        <div class="faculty-card text-center h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #1a3c34, #2a5a4f);">DS</div>
+          <h5 class="mt-3 mb-1">Damayanti Sánchez Duharte</h5>
+          <p class="text-gold fw-semibold mb-2">Secretaria Docente</p>
+          <p class="small"><i class="fas fa-envelope me-1"></i>dsanchezduharte@gmail.com</p>
+          <p class="small"><i class="fas fa-phone me-1"></i>54809519</p>
+          <a href="mailto:dsanchezduharte@gmail.com" class="stretched-link"></a>
+        </div>
+      </div>
+      
+      <!-- Secretaria Procesadora -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="admin">
+        <div class="faculty-card text-center h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #8b6914, #a57e1a);">YY</div>
+          <h5 class="mt-3 mb-1">Yeni Evelia Yirat Zapata</h5>
+          <p class="text-gold fw-semibold mb-2">Sec. Procesadora de Datos</p>
+          <p class="small"><i class="fas fa-phone me-1"></i>53842068</p>
+        </div>
+      </div>
+      
+      <!-- Secretaria Centros Bíblicos -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="admin">
+        <div class="faculty-card text-center h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #8b3a3a, #a54a4a);">ZR</div>
+          <h5 class="mt-3 mb-1">Zoe Del Rio Matos</h5>
+          <p class="text-gold fw-semibold mb-2">Secretaria Centros Bíblicos</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================= -->
+    <!-- SECCIÓN: DOCENTES (LISTA COMPLETA 46) -->
+    <!-- ============================================= -->
+    <div class="section-header mt-5" data-aos="fade-right">
+      <h2 class="font-serif mb-0"><i class="fas fa-chalkboard-user me-2 text-gold"></i>Claustro Académico Completo</h2>
+    </div>
+    <div class="row g-4" id="facultyGrid">
+      
+      <!-- 1. Dr. Bill Warren -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="doctor">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #1a3c34, #2a5a4f);">BW</div>
+          <h5 class="mt-3 mb-1">Dr. Bill Warren, PhD</h5>
+          <div class="mb-2"><span class="badge-materia">Parábolas</span><span class="badge-materia">Literatura Juanina</span></div>
+          <p class="small text-muted"><i class="fas fa-globe me-1"></i> Profesor Internacional</p>
+        </div>
+      </div>
+      
+      <!-- 2. Dr. Lloyd Harsh -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="doctor">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #8b6914, #a57e1a);">LH</div>
+          <h5 class="mt-3 mb-1">Dr. Lloyd Harsh</h5>
+          <div class="mb-2"><span class="badge-materia">Historia del Cristianismo</span></div>
+          <p class="small text-muted"><i class="fas fa-globe me-1"></i> Doctor en Historia</p>
+        </div>
+      </div>
+      
+      <!-- 3. Dra. Dailanis Figueroa -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="doctor">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #8b3a3a, #a54a4a);">DF</div>
+          <h5 class="mt-3 mb-1">Dra. Dailanis Figueroa</h5>
+          <div class="mb-2"><span class="badge-materia">Psicología Teológica</span><span class="badge-materia">Metodología Investigación</span></div>
+          <p class="small text-muted"><i class="fas fa-map-marker-alt me-1"></i> La Habana</p>
+        </div>
+      </div>
+      
+      <!-- 4. Ms. Dioelis Rodriguez del Rio -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="master">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #c4a035, #d4b045);">DR</div>
+          <h5 class="mt-3 mb-1">Ms. Dioelis Rodriguez del Rio</h5>
+          <div class="mb-2"><span class="badge-materia">Hebreo 1 y 2</span><span class="badge-materia">Libros Poéticos</span></div>
+          <p class="small"><i class="fas fa-envelope me-1"></i>drdelrio75@gmail.com</p>
+          <a href="mailto:drdelrio75@gmail.com" class="stretched-link"></a>
+        </div>
+      </div>
+      
+      <!-- 5. Lic. Acner Sánchez Fiffe -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="lic">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #1a3c34, #2a5a4f);">AS</div>
+          <h5 class="mt-3 mb-1">Lic. Acner Sánchez Fiffe</h5>
+          <div class="mb-2"><span class="badge-materia">Hechos de los Apóstoles</span></div>
+          <p class="small"><i class="fas fa-envelope me-1"></i>acnersanchez79@gmail.com</p>
+          <a href="mailto:acnersanchez79@gmail.com" class="stretched-link"></a>
+        </div>
+      </div>
+      
+      <!-- 6. MA. Adrián Arnaldo Alarcón Peralta -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="master">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #8b6914, #a57e1a);">AA</div>
+          <h5 class="mt-3 mb-1">MA. Adrián Arnaldo Alarcón</h5>
+          <div class="mb-2"><span class="badge-materia">Materias Teológicas</span></div>
+        </div>
+      </div>
+      
+      <!-- 7. Lic. Damaris Rodríguez -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="lic">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #8b3a3a, #a54a4a);">DR</div>
+          <h5 class="mt-3 mb-1">Lic. Damaris Rodríguez</h5>
+          <div class="mb-2"><span class="badge-materia">Español</span></div>
+          <p class="small text-muted"><i class="fas fa-map-marker-alt me-1"></i> La Habana</p>
+        </div>
+      </div>
+      
+      <!-- 8. Lic. Edén Rodríguez -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="lic">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #c4a035, #d4b045);">ER</div>
+          <h5 class="mt-3 mb-1">Lic. Edén Rodríguez</h5>
+          <div class="mb-2"><span class="badge-materia">Adoración</span></div>
+          <p class="small text-muted"><i class="fas fa-map-marker-alt me-1"></i> La Habana</p>
+        </div>
+      </div>
+      
+      <!-- 9. MA. Edgardo Rafael Tamayo Mesa -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="master">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #1a3c34, #2a5a4f);">ET</div>
+          <h5 class="mt-3 mb-1">MA. Edgardo Rafael Tamayo</h5>
+          <div class="mb-2"><span class="badge-materia">Doctrina del Espíritu Santo</span></div>
+        </div>
+      </div>
+      
+      <!-- 10. MA. Eisner Noa -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="master">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #8b6914, #a57e1a);">EN</div>
+          <h5 class="mt-3 mb-1">MA. Eisner Noa</h5>
+          <div class="mb-2"><span class="badge-materia">Nociones de Derecho</span></div>
+          <p class="small text-muted"><i class="fas fa-map-marker-alt me-1"></i> La Habana</p>
+        </div>
+      </div>
+      
+      <!-- 11. MA. Esteban Gonzalez Toirac -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="master">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #8b3a3a, #a54a4a);">EG</div>
+          <h5 class="mt-3 mb-1">MA. Esteban Gonzalez Toirac</h5>
+          <div class="mb-2"><span class="badge-materia">Angelología</span></div>
+          <p class="small"><i class="fas fa-envelope me-1"></i>estebangonzaleztoirac@gmail.com</p>
+          <a href="mailto:estebangonzaleztoirac@gmail.com" class="stretched-link"></a>
+        </div>
+      </div>
+      
+      <!-- 12. Lic. Félix Domínguez -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="lic">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #c4a035, #d4b045);">FD</div>
+          <h5 class="mt-3 mb-1">Lic. Félix Domínguez</h5>
+          <div class="mb-2"><span class="badge-materia">Historia del Cristianismo I y II</span></div>
+          <p class="small"><i class="fas fa-envelope me-1"></i>rvfelixr@gmail.com</p>
+          <a href="mailto:rvfelixr@gmail.com" class="stretched-link"></a>
+        </div>
+      </div>
+      
+      <!-- 13. MA. Fernando Flores -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="master">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #1a3c34, #2a5a4f);">FF</div>
+          <h5 class="mt-3 mb-1">MA. Fernando Flores</h5>
+          <div class="mb-2"><span class="badge-materia">Apologética</span></div>
+          <p class="small text-muted"><i class="fas fa-map-marker-alt me-1"></i> La Habana</p>
+        </div>
+      </div>
+      
+      <!-- 14. Lic. Fernando Labrada -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="lic">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #8b6914, #a57e1a);">FL</div>
+          <h5 class="mt-3 mb-1">Lic. Fernando Labrada</h5>
+          <div class="mb-2"><span class="badge-materia">Liderazgo</span></div>
+        </div>
+      </div>
+      
+      <!-- 15. Lic. Freddy De la Fuente -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="lic">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #8b3a3a, #a54a4a);">FF</div>
+          <h5 class="mt-3 mb-1">Lic. Freddy De la Fuente</h5>
+          <div class="mb-2"><span class="badge-materia">Libros Históricos</span><span class="badge-materia">Libros Poéticos</span></div>
+        </div>
+      </div>
+      
+      <!-- 16. MA. George Sotomayor Noa -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="master">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #c4a035, #d4b045);">GS</div>
+          <h5 class="mt-3 mb-1">MA. George Sotomayor Noa</h5>
+          <div class="mb-2"><span class="badge-materia">Antropología</span></div>
+          <p class="small"><i class="fas fa-envelope me-1"></i>george.sotomayor@nauta.cu</p>
+          <a href="mailto:george.sotomayor@nauta.cu" class="stretched-link"></a>
+        </div>
+      </div>
+      
+      <!-- 17. Lic. Harry Martínez -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="lic">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #1a3c34, #2a5a4f);">HM</div>
+          <h5 class="mt-3 mb-1">Lic. Harry Martínez</h5>
+          <div class="mb-2"><span class="badge-materia">Nociones de Derecho</span></div>
+        </div>
+      </div>
+      
+      <!-- 18. John y Brent (Los 7 hábitos) -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="lic">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #8b6914, #a57e1a);">JB</div>
+          <h5 class="mt-3 mb-1">John y Brent</h5>
+          <div class="mb-2"><span class="badge-materia">Los 7 hábitos</span></div>
+        </div>
+      </div>
+      
+      <!-- 19. MA. José Álvarez -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="master">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #8b3a3a, #a54a4a);">JA</div>
+          <h5 class="mt-3 mb-1">MA. José Álvarez</h5>
+          <div class="mb-2"><span class="badge-materia">Liderazgo</span></div>
+          <p class="small text-muted"><i class="fas fa-map-marker-alt me-1"></i> La Habana</p>
+        </div>
+      </div>
+      
+      <!-- 20. Lic. José Néstor Ginarte Vargas -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="lic">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #c4a035, #d4b045);">JG</div>
+          <h5 class="mt-3 mb-1">Lic. José Néstor Ginarte</h5>
+          <div class="mb-2"><span class="badge-materia">Sectas Falsas y Religiones</span></div>
+        </div>
+      </div>
+      
+      <!-- 21. Lic. Josué Rodríguez -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="lic">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #1a3c34, #2a5a4f);">JR</div>
+          <h5 class="mt-3 mb-1">Lic. Josué Rodríguez</h5>
+          <div class="mb-2"><span class="badge-materia">Ministerio Práctico</span></div>
+        </div>
+      </div>
+      
+      <!-- 22. Lic. Karel Reyes -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="lic">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #8b6914, #a57e1a);">KR</div>
+          <h5 class="mt-3 mb-1">Lic. Karel Reyes</h5>
+          <div class="mb-2"><span class="badge-materia">Introducción al N.T.</span></div>
+          <p class="small text-muted"><i class="fas fa-map-marker-alt me-1"></i> La Habana</p>
+        </div>
+      </div>
+      
+      <!-- 23. Lic. Lázaro Gómez Quiala -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="lic">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #8b3a3a, #a54a4a);">LG</div>
+          <h5 class="mt-3 mb-1">Lic. Lázaro Gómez Quiala</h5>
+          <div class="mb-2"><span class="badge-materia">Soteriología</span></div>
+          <p class="small"><i class="fas fa-envelope me-1"></i>lazarogomez58@nauta.cu</p>
+          <a href="mailto:lazarogomez58@nauta.cu" class="stretched-link"></a>
+        </div>
+      </div>
+      
+      <!-- 24. Lic. Lázaro Michel Suárez Cobas -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="lic">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #c4a035, #d4b045);">LS</div>
+          <h5 class="mt-3 mb-1">Lic. Lázaro Michel Suárez</h5>
+          <div class="mb-2"><span class="badge-materia">Doctrina de Dios</span><span class="badge-materia">Hermenéutica</span></div>
+          <p class="small"><i class="fas fa-envelope me-1"></i>lazarosc2016@gmail.com</p>
+          <p class="small text-muted"><i class="fas fa-map-marker-alt me-1"></i> La Habana</p>
+          <a href="mailto:lazarosc2016@gmail.com" class="stretched-link"></a>
+        </div>
+      </div>
+      
+      <!-- 25. Lic. Ledian Medina Isaac -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="lic">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #1a3c34, #2a5a4f);">LM</div>
+          <h5 class="mt-3 mb-1">Lic. Ledian Medina Isaac</h5>
+          <div class="mb-2"><span class="badge-materia">Libros Proféticos</span></div>
+        </div>
+      </div>
+      
+      <!-- 26. MA. Leidys Durán Rodríguez -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="master">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #8b6914, #a57e1a);">LD</div>
+          <h5 class="mt-3 mb-1">MA. Leidys Durán Rodríguez</h5>
+          <div class="mb-2"><span class="badge-materia">Ministerio Educativo</span></div>
+          <p class="small"><i class="fas fa-envelope me-1"></i>leidysduranrodriguez@gmail.com</p>
+          <a href="mailto:leidysduranrodriguez@gmail.com" class="stretched-link"></a>
+        </div>
+      </div>
+      
+      <!-- 27. MSc. Manuel E. Remon Chavez -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="master">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #8b3a3a, #a54a4a);">MR</div>
+          <h5 class="mt-3 mb-1">MSc. Manuel E. Remon Chavez</h5>
+          <div class="mb-2"><span class="badge-materia">Hermenéutica 1 y 2</span></div>
+          <p class="small"><i class="fas fa-envelope me-1"></i>remonmanuel@nauta.cu</p>
+          <a href="mailto:remonmanuel@nauta.cu" class="stretched-link"></a>
+        </div>
+      </div>
+      
+      <!-- 28. Lic. Marcos Rivero Sinclair -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="lic">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #c4a035, #d4b045);">MR</div>
+          <h5 class="mt-3 mb-1">Lic. Marcos Rivero Sinclair</h5>
+          <div class="mb-2"><span class="badge-materia">Evangelismo y Discipulado</span></div>
+        </div>
+      </div>
+      
+      <!-- 29. Lic. Michel Morales Avila -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="lic">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #1a3c34, #2a5a4f);">MM</div>
+          <h5 class="mt-3 mb-1">Lic. Michel Morales Avila</h5>
+          <div class="mb-2"><span class="badge-materia">Hamartiología</span><span class="badge-materia">Soteriología</span></div>
+          <p class="small"><i class="fas fa-envelope me-1"></i>michelmorales1980@gmail.com</p>
+          <a href="mailto:michelmorales1980@gmail.com" class="stretched-link"></a>
+        </div>
+      </div>
+      
+      <!-- 30. Lic. Milton Cadet Brown -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="lic">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #8b6914, #a57e1a);">MC</div>
+          <h5 class="mt-3 mb-1">Lic. Milton Cadet Brown</h5>
+          <div class="mb-2"><span class="badge-materia">Epístolas Pastorales</span></div>
+        </div>
+      </div>
+      
+      <!-- 31. Lic. Onel Pardillo Garcia -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="lic">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #8b3a3a, #a54a4a);">OP</div>
+          <h5 class="mt-3 mb-1">Lic. Onel Pardillo Garcia</h5>
+          <div class="mb-2"><span class="badge-materia">Introducción al A.T.</span><span class="badge-materia">Hebreo</span></div>
+          <p class="small"><i class="fas fa-envelope me-1"></i>prpardillo@gmail.com</p>
+          <p class="small text-muted"><i class="fas fa-map-marker-alt me-1"></i> La Habana</p>
+          <a href="mailto:prpardillo@gmail.com" class="stretched-link"></a>
+        </div>
+      </div>
+      
+      <!-- 32. MA. Olga Sánchez Duharte -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="master">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #c4a035, #d4b045);">OS</div>
+          <h5 class="mt-3 mb-1">MA. Olga Sánchez Duharte</h5>
+          <div class="mb-2"><span class="badge-materia">Español</span></div>
+        </div>
+      </div>
+      
+      <!-- 33. MA. Osiel Matos -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="master">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #1a3c34, #2a5a4f);">OM</div>
+          <h5 class="mt-3 mb-1">MA. Osiel Matos</h5>
+          <div class="mb-2"><span class="badge-materia">Mayordomía Integral</span></div>
+        </div>
+      </div>
+      
+      <!-- 34. Lic. Rolando Yohamed Desdín García -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="lic">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #8b6914, #a57e1a);">RD</div>
+          <h5 class="mt-3 mb-1">Lic. Rolando Yohamed Desdín</h5>
+          <div class="mb-2"><span class="badge-materia">Griego I y II</span></div>
+        </div>
+      </div>
+      
+      <!-- 35. MA. Sue Haueter -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="master">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #8b3a3a, #a54a4a);">SH</div>
+          <h5 class="mt-3 mb-1">MA. Sue Haueter</h5>
+          <div class="mb-2"><span class="badge-materia">Materias Teológicas</span></div>
+        </div>
+      </div>
+      
+      <!-- 36. Prof. Timoteo Broach -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="lic">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #c4a035, #d4b045);">TB</div>
+          <h5 class="mt-3 mb-1">Prof. Timoteo Broach</h5>
+          <div class="mb-2"><span class="badge-materia">Liderazgo</span><span class="badge-materia">Metodología Enseñanza</span></div>
+          <p class="small"><i class="fas fa-envelope me-1"></i>tbroach@reachbeyond.org</p>
+          <p class="small text-muted"><i class="fas fa-map-marker-alt me-1"></i> La Habana</p>
+          <a href="mailto:tbroach@reachbeyond.org" class="stretched-link"></a>
+        </div>
+      </div>
+      
+      <!-- 37. MA. Wilfrido Sánchez Ramírez -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="master">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #1a3c34, #2a5a4f);">WS</div>
+          <h5 class="mt-3 mb-1">MA. Wilfrido Sánchez Ramírez</h5>
+          <div class="mb-2"><span class="badge-materia">Apologética</span></div>
+          <p class="small"><i class="fas fa-envelope me-1"></i>wsanchezramirez83@gmail.com</p>
+          <a href="mailto:wsanchezramirez83@gmail.com" class="stretched-link"></a>
+        </div>
+      </div>
+      
+      <!-- 38. Lic. Yoelkis Pérez -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="lic">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #8b6914, #a57e1a);">YP</div>
+          <h5 class="mt-3 mb-1">Lic. Yoelkis Pérez</h5>
+          <div class="mb-2"><span class="badge-materia">Consejería</span></div>
+        </div>
+      </div>
+      
+      <!-- 39. Lic. Yordanel Navarro -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="lic">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #8b3a3a, #a54a4a);">YN</div>
+          <h5 class="mt-3 mb-1">Lic. Yordanel Navarro</h5>
+          <div class="mb-2"><span class="badge-materia">Doctrina de la Salvación</span><span class="badge-materia">Hechos</span></div>
+          <p class="small text-muted"><i class="fas fa-map-marker-alt me-1"></i> La Habana</p>
+        </div>
+      </div>
+      
+      <!-- 40. Lic. Yunior Hernández Gonzalez -->
+      <div class="col-lg-3 col-md-4 col-sm-6" data-category="lic">
+        <div class="faculty-card h-100">
+          <div class="avatar-circle mx-auto" style="background: linear-gradient(145deg, #c4a035, #d4b045);">YH</div>
+          <h5 class="mt-3 mb-1">Lic. Yunior Hernández Gonzalez</h5>
+          <div class="mb-2"><span class="badge-materia">Adoración</span></div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <!-- Nota sobre docentes internacionales -->
+    <div class="row mt-5">
+      <div class="col-12">
+        <div class="alert alert-light border-0 rounded-4 p-4 shadow-sm" data-aos="fade-up">
+          <div class="d-flex align-items-center">
+            <i class="fas fa-globe-americas fa-3x text-gold me-4"></i>
+            <div>
+              <h5 class="mb-2">Docentes Invitados Internacionales</h5>
+              <p class="mb-0">Contamos con profesores de <strong>Southeastern Baptist Theological Seminary</strong> y misioneros de <strong>Reach Beyond</strong> que enriquecen nuestro programa académico con una perspectiva global.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
   </div>
 </section>
 
-<footer class="bg-dark text-white py-4"><div class="container text-center"><p>&copy; 2024 Seminario Teológico Bautista de Cuba Oriental</p></div></footer>
+<!-- FOOTER -->
+<footer class="bg-dark text-white py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <i class="fas fa-cross fa-2x text-gold mb-3"></i>
+        <p class="opacity-75">Formando pastores y líderes cristianos para la edificación del pueblo de Dios desde 1949.</p>
+      </div>
+      <div class="col-lg-2 col-md-4 mb-4">
+        <h5 class="text-gold">Enlaces</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="index.html" class="text-white-50 text-decoration-none">Inicio</a></li>
+          <li class="mb-2"><a href="admisiones.html" class="text-white-50 text-decoration-none">Admisiones</a></li>
+          <li class="mb-2"><a href="docentes.html" class="text-white-50 text-decoration-none">Docentes</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-4 mb-4">
+        <h5 class="text-gold">Recursos</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="login-intranet.html" class="text-white-50 text-decoration-none">Aula Virtual</a></li>
+          <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Biblioteca</a></li>
+          <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Calendario</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-4 mb-4">
+        <h5 class="text-gold">Apoya</h5>
+        <p class="opacity-75 small">Tu ofrenda hace posible la formación de pastores para Cuba.</p>
+        <a href="#" class="btn btn-gold btn-sm rounded-pill px-4">Donar Ahora</a>
+      </div>
+    </div>
+    <hr class="opacity-25 my-4">
+    <div class="row">
+      <div class="col text-center">
+        <p class="small opacity-50 mb-0">&copy; 2024 Seminario Teológico Bautista de Cuba Oriental. Convención Bautista de Cuba Oriental.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script src="js/main.js"></script>
-<script>AOS.init();</script>
+<script>
+  AOS.init({ duration: 1000, once: true });
+  
+  // Sistema de filtrado y búsqueda
+  const searchInput = document.getElementById('searchInput');
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const facultyCards = document.querySelectorAll('#facultyGrid .col-lg-3, #adminGrid .col-lg-3');
+  
+  let currentFilter = 'all';
+  
+  // Filtro por categoría
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      currentFilter = this.dataset.filter;
+      filterCards();
+    });
+  });
+  
+  // Búsqueda por texto
+  searchInput.addEventListener('input', filterCards);
+  
+  function filterCards() {
+    const searchTerm = searchInput.value.toLowerCase();
+    
+    facultyCards.forEach(card => {
+      const cardText = card.textContent.toLowerCase();
+      const category = card.dataset.category;
+      
+      const matchesSearch = cardText.includes(searchTerm);
+      const matchesFilter = currentFilter === 'all' || category === currentFilter;
+      
+      if (matchesSearch && matchesFilter) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+</script>
 </body>
 </html>
