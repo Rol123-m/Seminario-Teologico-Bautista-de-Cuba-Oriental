@@ -3,19 +3,115 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admisiones · STBCOR</title>
+  <title>Admisiones · Seminario Teológico Bautista</title>
+  
+  <!-- Bootstrap 5 + Iconos -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Fuentes Premium -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Librerías CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  
+  <!-- Estilos Propios -->
   <link rel="stylesheet" href="css/main.css">
+  
+  <style>
+    .step-card {
+      border-radius: 24px;
+      transition: var(--transition-smooth);
+      height: 100%;
+    }
+    .step-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+    .step-number-large {
+      width: 60px;
+      height: 60px;
+      background: var(--primary-sacred-gold);
+      color: var(--primary-deep-teal);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .checklist-item {
+      padding: 8px 0;
+      border-bottom: 1px dashed rgba(0,0,0,0.05);
+    }
+    .checklist-item i {
+      color: var(--primary-sacred-gold);
+      margin-right: 10px;
+    }
+    .requirement-badge {
+      background: var(--primary-deep-teal);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 16px;
+      margin-bottom: 10px;
+    }
+    .testimonial-card {
+      background: white;
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+    }
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      font-size: 5rem;
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--primary-sacred-gold);
+      opacity: 0.2;
+    }
+    .timeline-vertical {
+      position: relative;
+      padding-left: 30px;
+    }
+    .timeline-vertical::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--primary-sacred-gold), var(--primary-deep-teal));
+      border-radius: 3px;
+    }
+    .timeline-dot {
+      position: absolute;
+      left: -9px;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      background: var(--primary-sacred-gold);
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: var(--shadow-soft);
+    }
+  </style>
 </head>
 <body>
 
+<!-- NAVBAR FLOTANTE -->
 <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
   <div class="container">
-    <a class="navbar-brand" href="index.html"><i class="fas fa-cross text-gold me-2"></i><span class="fw-bold">Seminario Teológico Bautista <br><small>Cuba Oriental</small></span></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"><span class="navbar-toggler-icon"></span></button>
+    <a class="navbar-brand" href="index.html">
+      <i class="fas fa-cross text-gold me-2"></i>
+      <span class="fw-bold">Seminario Teológico Bautista <br><small>Cuba Oriental</small></span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+      <span class="navbar-toggler-icon"></span>
+    </button>
     <div class="collapse navbar-collapse" id="navbarMain">
       <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
         <li class="nav-item"><a class="nav-link" href="index.html">INICIO</a></li>
@@ -24,63 +120,66 @@
         <li class="nav-item"><a class="nav-link" href="docentes.html">COMUNIDAD</a></li>
         <li class="nav-item"><a class="nav-link" href="contacto.html">CONTACTO</a></li>
       </ul>
+      <div class="d-flex gap-2">
+        <a href="#" class="btn btn-outline-gold rounded-pill">DONAR</a>
+        <a href="login-intranet.html" class="btn btn-brick rounded-pill">AULA VIRTUAL</a>
+      </div>
     </div>
   </div>
 </nav>
 
-<header class="py-7 bg-teal text-white mt-5">
-  <div class="container py-5 text-center">
+<!-- HERO SECTION -->
+<header class="py-7 bg-teal text-white mt-5 position-relative overflow-hidden">
+  <div class="position-absolute top-0 end-0 opacity-10">
+    <i class="fas fa-pray fa-10x"></i>
+  </div>
+  <div class="container py-5 text-center position-relative">
+    <span class="badge bg-gold text-dark mb-3 px-4 py-2 rounded-pill" data-aos="fade-down">
+      <i class="fas fa-bible me-2"></i>1 Timoteo 3:1
+    </span>
     <h1 class="display-3 font-serif" data-aos="fade-up">Discierne tu Llamado</h1>
-    <p class="lead" data-aos="fade-up">Un proceso diseñado para confirmar la obra de Dios en tu vida</p>
+    <p class="lead mb-4" data-aos="fade-up" data-aos-delay="100">Un proceso diseñado para confirmar la obra de Dios en tu vida</p>
+    <p class="opacity-90" data-aos="fade-up" data-aos-delay="200">
+      <i class="fas fa-quote-left me-2"></i>
+      Palabra fiel: Si alguno anhela obispado, buena obra desea.
+      <i class="fas fa-quote-right ms-2"></i>
+    </p>
   </div>
 </header>
 
-<section class="py-5">
+<!-- SECCIÓN: INTRODUCCIÓN AL LLAMADO -->
+<section class="py-5 bg-cream">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-8">
-        <div class="card shadow-sm mb-4" data-aos="fade-up">
-          <div class="card-body p-4">
-            <h3><i class="fas fa-check-circle text-gold me-2"></i>Fase 1: Discernimiento Inicial</h3>
-            <ul><li>Mínimo 1 año entre notificación a la iglesia y Cursillo.</li><li>Mínimo 3 años de membresía activa.</li></ul>
-          </div>
-        </div>
-        <div class="card shadow-sm mb-4" data-aos="fade-up">
-          <div class="card-body p-4">
-            <h3><i class="fas fa-file-alt text-gold me-2"></i>Fase 2: Carta Oficial de la Iglesia</h3>
-            <p>Debe contener 19 puntos. <a href="#">Descargar Plantilla</a></p>
-            <div class="row checklist"><div class="col-md-6"><i class="far fa-square"></i> Nombre completo</div><div class="col-md-6"><i class="far fa-square"></i> Edad</div><div class="col-md-6"><i class="far fa-square"></i> Estado Civil</div><div class="col-md-6"><i class="far fa-square"></i> Datos de hijos</div><div class="col-md-6"><i class="far fa-square"></i> Años de convertido</div><div class="col-md-6"><i class="far fa-square"></i> Cargos en la iglesia</div><div class="col-md-6"><i class="far fa-square"></i> Fotos</div><div class="col-md-6"><i class="far fa-square"></i> Cartas Pastorales</div></div>
-          </div>
-        </div>
-        <div class="card shadow-sm mb-4" data-aos="fade-up">
-          <div class="card-body p-4">
-            <h3><i class="fas fa-pen-fancy text-gold me-2"></i>Fase 3: Cartas Personales</h3>
-            <p><strong>Carta del Aspirante:</strong> Reseña, Conversión, Llamamiento.</p>
-            <p><strong>Carta de la Esposa:</strong> Reseña, Evidencias del llamado en su esposo.</p>
-          </div>
-        </div>
-        <div class="card shadow-sm" data-aos="fade-up">
-          <div class="card-body p-4">
-            <h3><i class="fas fa-handshake text-gold me-2"></i>Fase 4: Presentación</h3>
-            <p>Documentación "a máquina", entregada personalmente en el Seminario por el pastor.</p>
-          </div>
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6" data-aos="fade-right">
+        <span class="text-gold fw-bold text-uppercase small">El Fundamento</span>
+        <h2 class="display-5 font-serif mb-4">¿Sientes el <span class="text-teal">Llamado Pastoral?</span></h2>
+        <p class="lead mb-4">"Nadie puede ser pastor, si antes no ha sido oveja."</p>
+        <p>El llamado al ministerio pastoral no es una decisión apresurada. En el Seminario Teológico Bautista de Cuba Oriental, creemos que este llamado debe ser confirmado por la iglesia local, probado en el servicio y refinado en la formación académica y espiritual.</p>
+        <p>Nuestro proceso de admisión está diseñado para ayudarte a discernir si este es el tiempo de Dios para tu preparación ministerial formal.</p>
+        <div class="mt-4">
+          <a href="#proceso" class="btn btn-teal rounded-pill px-5 py-3">Ver Proceso Completo <i class="fas fa-arrow-down ms-2"></i></a>
         </div>
       </div>
-      <div class="col-lg-4">
-        <div class="card shadow-sm bg-cream" data-aos="fade-left">
-          <div class="card-body p-4">
-            <h4>Formulario de Pre-contacto</h4>
-            <form>
-              <input type="text" class="form-control mb-2" placeholder="Nombre">
-              <input type="text" class="form-control mb-2" placeholder="Iglesia Local">
-              <input type="email" class="form-control mb-2" placeholder="Correo">
-              <textarea class="form-control mb-2" placeholder="Mensaje">Quiero iniciar el proceso</textarea>
-              <button class="btn btn-teal w-100">Enviar</button>
-            </form>
-            <hr>
-            <h5>Preguntas Frecuentes</h5>
-            <p><strong>¿Solteros?</strong> Sí, pueden aplicar.</p>
-            <p><strong>¿Becas?</strong> Consultar en administración.</p>
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="testimonial-card">
+          <p class="fst-italic mb-3">"Cuando llegué al Seminario, pensé que venía solo a estudiar. Descubrí que venía a ser formado integralmente: en carácter, en devoción y en conocimiento de la Palabra."</p>
+          <div class="d-flex align-items-center">
+            <div class="avatar-circle me-3" style="width: 50px; height: 50px; font-size: 1rem;">EG</div>
+            <div>
+              <h6 class="mb-0">Egresado 2018</h6>
+              <small class="text-muted">Pastor en Santiago de Cuba</small>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card mt-4">
+          <p class="fst-italic mb-3">"El proceso de admisión me ayudó a confirmar mi llamado. Mi iglesia y mis pastores fueron parte fundamental en cada paso."</p>
+          <div class="d-flex align-items-center">
+            <div class="avatar-circle me-3" style="width: 50px; height: 50px; font-size: 1rem;">MR</div>
+            <div>
+              <h6 class="mb-0">Estudiante de 3er año</h6>
+              <small class="text-muted">Ministerio Pastoral</small>
+            </div>
           </div>
         </div>
       </div>
@@ -88,10 +187,348 @@
   </div>
 </section>
 
-<footer class="bg-dark text-white py-4"><div class="container text-center"><p>&copy; 2024 Seminario Teológico Bautista de Cuba Oriental</p></div></footer>
+<!-- SECCIÓN: PROCESO DE ADMISIÓN (FASES) -->
+<section id="proceso" class="py-7">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <span class="text-gold fw-bold text-uppercase small">El Camino a Seguir</span>
+      <h2 class="display-5 font-serif">Proceso de <span class="text-teal">Admisión</span></h2>
+      <div class="divider mx-auto"></div>
+    </div>
+
+    <!-- FASE 1 -->
+    <div class="row mb-5 g-4">
+      <div class="col-lg-2" data-aos="fade-right">
+        <div class="step-number-large">1</div>
+      </div>
+      <div class="col-lg-10" data-aos="fade-left">
+        <div class="step-card bg-white p-4 shadow-sm">
+          <h3 class="font-serif mb-3"><i class="fas fa-hourglass-start text-gold me-2"></i>Fase 1: Discernimiento Inicial</h3>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="requirement-badge bg-teal text-white">
+                <i class="fas fa-calendar-alt me-2"></i>
+                <strong>Mínimo 1 año</strong> entre la notificación a la iglesia y el Cursillo de Aceptación del Seminario.
+              </div>
+              <p class="text-muted mt-2">Esto evita decisiones apresuradas y permite a la Dirección del Seminario contar con un Banco de Información sobre futuros aspirantes.</p>
+            </div>
+            <div class="col-md-6">
+              <div class="requirement-badge bg-gold text-dark">
+                <i class="fas fa-users me-2"></i>
+                <strong>Mínimo 3 años</strong> de experiencia en la iglesia local.
+              </div>
+              <p class="text-muted mt-2 fst-italic">"Nadie puede ser pastor, si antes no ha sido oveja."</p>
+            </div>
+          </div>
+          <div class="alert alert-light border-0 mt-3 rounded-4">
+            <i class="fas fa-info-circle text-gold me-2"></i>
+            <strong>Comisión de Evaluación de Aspirantes al Santo Ministerio:</strong> Se activa desde el momento en que la iglesia envía la Carta Oficial de información sobre el aspirante.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FASE 2 -->
+    <div class="row mb-5 g-4">
+      <div class="col-lg-2" data-aos="fade-right">
+        <div class="step-number-large">2</div>
+      </div>
+      <div class="col-lg-10" data-aos="fade-left">
+        <div class="step-card bg-white p-4 shadow-sm">
+          <h3 class="font-serif mb-3"><i class="fas fa-file-signature text-gold me-2"></i>Fase 2: Carta Oficial de la Iglesia</h3>
+          <p>La Carta Oficial de Comunicación de la Iglesia sobre el futuro aspirante debe contener los siguientes <strong>19 puntos</strong>:</p>
+          
+          <div class="row mt-3">
+            <div class="col-md-6">
+              <div class="checklist-item"><i class="fas fa-check-circle"></i> Nombre con dos apellidos</div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i> Edad</div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i> Último grado escolar cursado</div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i> Estado Civil</div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i> Datos de hijos (cantidad, edad, sexo)</div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i> Dirección particular</div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i> Años de convertido</div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i> Años de bautizado</div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i> Cursos recibidos</div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i> Tiempo sintiendo el llamado</div>
+            </div>
+            <div class="col-md-6">
+              <div class="checklist-item"><i class="fas fa-check-circle"></i> Cargos que ocupa o ha ocupado</div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i> Situación laboral / estudiante</div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i> Datos de los padres y su fe</div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i> Hermanos y su fe</div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i> Experiencia de servicio cristiano</div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i> Servicio Militar (si aplica)</div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i> 2 Fotos del aspirante</div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i> Datos de la esposa + 2 fotos (si casado)</div>
+              <div class="checklist-item"><i class="fas fa-check-circle"></i> Cartas del Pastor y Diáconos</div>
+            </div>
+          </div>
+          
+          <div class="mt-4 p-3 bg-light-sage rounded-4">
+            <i class="fas fa-file-pdf text-brick me-2"></i>
+            <strong>Descarga la plantilla oficial:</strong> 
+            <a href="#" class="text-teal fw-bold">Guía de Carta de Recomendación (PDF)</a> | 
+            <a href="#" class="text-teal fw-bold">Plantilla Word (.docx)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FASE 3 -->
+    <div class="row mb-5 g-4">
+      <div class="col-lg-2" data-aos="fade-right">
+        <div class="step-number-large">3</div>
+      </div>
+      <div class="col-lg-10" data-aos="fade-left">
+        <div class="step-card bg-white p-4 shadow-sm">
+          <h3 class="font-serif mb-3"><i class="fas fa-pen-fancy text-gold me-2"></i>Fase 3: Cartas Personales</h3>
+          
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="p-3 bg-cream rounded-4 h-100">
+                <h5><i class="fas fa-user-graduate text-teal me-2"></i>Carta del Aspirante</h5>
+                <p class="small text-muted mb-3">Debe recoger y exponer:</p>
+                <ul class="list-unstyled">
+                  <li class="mb-2"><i class="fas fa-circle text-gold me-2 small"></i>Reseña biográfica</li>
+                  <li class="mb-2"><i class="fas fa-circle text-gold me-2 small"></i>Experiencia de Conversión</li>
+                  <li class="mb-2"><i class="fas fa-circle text-gold me-2 small"></i>Trayectoria y experiencia en la vida cristiana</li>
+                  <li class="mb-2"><i class="fas fa-circle text-gold me-2 small"></i>Experiencia de Llamamiento al Santo Ministerio</li>
+                  <li class="mb-2"><i class="fas fa-circle text-gold me-2 small"></i>Visión sobre lo que debe ser un pastor</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="p-3 bg-cream rounded-4 h-100">
+                <h5><i class="fas fa-female text-teal me-2"></i>Carta de la Esposa (si aplica)</h5>
+                <p class="small text-muted mb-3">Debe recoger y exponer:</p>
+                <ul class="list-unstyled">
+                  <li class="mb-2"><i class="fas fa-circle text-gold me-2 small"></i>Reseña biográfica</li>
+                  <li class="mb-2"><i class="fas fa-circle text-gold me-2 small"></i>Experiencia de conversión</li>
+                  <li class="mb-2"><i class="fas fa-circle text-gold me-2 small"></i>Trayectoria y experiencia cristiana</li>
+                  <li class="mb-2"><i class="fas fa-circle text-gold me-2 small"></i>Evidencias del llamado en su esposo</li>
+                  <li class="mb-2"><i class="fas fa-circle text-gold me-2 small"></i>Virtudes de una esposa de pastor</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FASE 4 -->
+    <div class="row mb-5 g-4">
+      <div class="col-lg-2" data-aos="fade-right">
+        <div class="step-number-large">4</div>
+      </div>
+      <div class="col-lg-10" data-aos="fade-left">
+        <div class="step-card bg-white p-4 shadow-sm">
+          <h3 class="font-serif mb-3"><i class="fas fa-handshake text-gold me-2"></i>Fase 4: Documentación y Presentación</h3>
+          <div class="alert alert-warning border-0 rounded-4 bg-gold bg-opacity-10">
+            <i class="fas fa-exclamation-triangle text-gold me-2"></i>
+            <strong>Importante:</strong> Toda esta documentación debe ser hecha a máquina y presentada de forma personal en el Seminario por el pastor de la iglesia o un líder enviado a tal efecto.
+          </div>
+          <p class="mt-3">Una vez recibida toda la documentación, la Comisión de Preparación Ministerial evaluará el caso y se comunicará con la iglesia local para continuar con el proceso de aceptación y el Cursillo de Aspirantes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECCIÓN: PREGUNTAS FRECUENTES Y FORMULARIO -->
+<section class="py-5 bg-light-sage">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-7" data-aos="fade-right">
+        <h2 class="font-serif mb-4">Preguntas <span class="text-teal">Frecuentes</span></h2>
+        
+        <div class="accordion" id="faqAccordion">
+          <div class="accordion-item border-0 mb-3 rounded-4 shadow-sm">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed rounded-4" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                <i class="fas fa-user me-3 text-gold"></i> ¿Puedo aplicar si soy soltero?
+              </button>
+            </h3>
+            <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Sí, los solteros pueden aplicar. El proceso es el mismo, omitiendo los requisitos relacionados con la esposa. Se evaluará su madurez espiritual y llamado con igual seriedad.</div>
+            </div>
+          </div>
+          
+          <div class="accordion-item border-0 mb-3 rounded-4 shadow-sm">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed rounded-4" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                <i class="fas fa-coins me-3 text-gold"></i> ¿Hay becas o ayuda financiera disponible?
+              </button>
+            </h3>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Sí, el Seminario cuenta con un fondo de becas limitado para estudiantes con necesidades económicas comprobadas. Además, muchas iglesias locales apoyan a sus candidatos. Consulta con la administración al momento de tu entrevista.</div>
+            </div>
+          </div>
+          
+          <div class="accordion-item border-0 mb-3 rounded-4 shadow-sm">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed rounded-4" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                <i class="fas fa-female me-3 text-gold"></i> ¿Las esposas deben estudiar también?
+              </button>
+            </h3>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Ofrecemos el programa de "Capacitación para Esposas de Seminaristas", que no es obligatorio pero sí altamente recomendado para que la pareja ministerial esté igualmente equipada para el servicio.</div>
+            </div>
+          </div>
+          
+          <div class="accordion-item border-0 mb-3 rounded-4 shadow-sm">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed rounded-4" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                <i class="fas fa-clock me-3 text-gold"></i> ¿Cuánto dura el programa de Licenciatura en Ministerio Pastoral?
+              </button>
+            </h3>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">La duración es de 4 años en modalidad semipresencial. Puedes obtener salidas intermedias: Diploma (Nivel I - 43 créditos) y Bachiller en Teología (Nivel II - 47 créditos adicionales).</div>
+            </div>
+          </div>
+          
+          <div class="accordion-item border-0 mb-3 rounded-4 shadow-sm">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed rounded-4" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                <i class="fas fa-file-alt me-3 text-gold"></i> ¿Qué es el Cursillo de Aceptación?
+              </button>
+            </h3>
+            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Es un encuentro de varios días en el campus de La Caoba donde los aspirantes son evaluados en su llamado, conocimiento bíblico básico, carácter cristiano y adaptación a la vida comunitaria del Seminario.</div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Programa para Esposas -->
+        <div class="mt-5 p-4 bg-white rounded-4 shadow-sm">
+          <h4><i class="fas fa-heart text-brick me-2"></i>Capacitación para Esposas de Seminaristas</h4>
+          <p>Un programa especial diseñado para equipar a las esposas en su rol único de apoyo ministerial. Incluye estudios bíblicos, consejería y desarrollo personal.</p>
+          <a href="#" class="btn btn-outline-teal rounded-pill">Más información</a>
+        </div>
+      </div>
+      
+      <div class="col-lg-5" data-aos="fade-left">
+        <div class="card shadow-lg border-0 rounded-4 sticky-top" style="top: 100px;">
+          <div class="card-body p-4 p-lg-5 bg-cream rounded-4">
+            <div class="text-center mb-4">
+              <i class="fas fa-envelope-open-text fa-3x text-gold mb-3"></i>
+              <h3 class="font-serif">Inicia tu Proceso</h3>
+              <p class="text-muted">Completa este formulario y un asesor de admisiones se pondrá en contacto contigo y tu pastor.</p>
+            </div>
+            
+            <form>
+              <div class="mb-3">
+                <label class="form-label fw-semibold">Nombre Completo</label>
+                <input type="text" class="form-control form-control-immersive w-100" placeholder="Ej. Juan Pérez Rodríguez">
+              </div>
+              <div class="mb-3">
+                <label class="form-label fw-semibold">Iglesia Local</label>
+                <input type="text" class="form-control form-control-immersive w-100" placeholder="Ej. Primera Iglesia Bautista de Santiago">
+              </div>
+              <div class="mb-3">
+                <label class="form-label fw-semibold">Nombre del Pastor</label>
+                <input type="text" class="form-control form-control-immersive w-100" placeholder="Nombre de tu pastor">
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label fw-semibold">Correo Electrónico</label>
+                  <input type="email" class="form-control form-control-immersive w-100" placeholder="correo@ejemplo.com">
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label class="form-label fw-semibold">Teléfono</label>
+                  <input type="tel" class="form-control form-control-immersive w-100" placeholder="+53">
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label fw-semibold">Mensaje o Comentario</label>
+                <textarea class="form-control form-control-immersive w-100" rows="3" placeholder="Cuéntanos brevemente sobre tu llamado...">Quiero iniciar el proceso de discernimiento para el Seminario.</textarea>
+              </div>
+              <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="pastorContact">
+                <label class="form-check-label small" for="pastorContact">Autorizo que se contacte a mi pastor para dar seguimiento a este proceso.</label>
+              </div>
+              <button type="submit" class="btn btn-teal w-100 rounded-pill py-3">
+                <i class="fas fa-paper-plane me-2"></i>Enviar Solicitud de Información
+              </button>
+              <p class="small text-muted text-center mt-3 mb-0">
+                <i class="fas fa-lock me-1"></i> Tus datos serán tratados con confidencialidad.
+              </p>
+            </form>
+            
+            <hr class="my-4">
+            
+            <div class="text-center">
+              <p class="mb-2"><i class="fas fa-phone-alt text-gold me-2"></i> ¿Prefieres llamar?</p>
+              <h5 class="text-teal">+53 22 61 23 45</h5>
+              <p class="small text-muted">Secretaría Docente: Damayanti Sánchez</p>
+              <p class="small"><i class="fas fa-envelope me-1"></i> secdocestbcor@gmail.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECCIÓN: COMISIÓN DE EVALUACIÓN -->
+<section class="py-5 bg-teal text-white">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-8" data-aos="fade-right">
+        <h3 class="font-serif mb-3">La Comisión de Evaluación de Aspirantes al Santo Ministerio</h3>
+        <p class="opacity-90 mb-0">Un equipo de pastores y líderes experimentados que, en oración, evalúan cada caso para confirmar la obra del Espíritu Santo en la vida de los candidatos. Su labor es fundamental para mantener la excelencia y fidelidad del ministerio pastoral en Cuba Oriental.</p>
+      </div>
+      <div class="col-lg-4 text-center" data-aos="fade-left">
+        <i class="fas fa-praying-hands fa-5x text-gold"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <i class="fas fa-cross fa-2x text-gold mb-3"></i>
+        <p class="opacity-75">Formando pastores y líderes cristianos para la edificación del pueblo de Dios desde 1949.</p>
+      </div>
+      <div class="col-lg-2 col-md-4 mb-4">
+        <h5 class="text-gold">Enlaces</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="index.html" class="text-white-50 text-decoration-none">Inicio</a></li>
+          <li class="mb-2"><a href="admisiones.html" class="text-white-50 text-decoration-none">Admisiones</a></li>
+          <li class="mb-2"><a href="docentes.html" class="text-white-50 text-decoration-none">Docentes</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-4 mb-4">
+        <h5 class="text-gold">Recursos</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="login-intranet.html" class="text-white-50 text-decoration-none">Aula Virtual</a></li>
+          <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Biblioteca</a></li>
+          <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none">Calendario</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-4 mb-4">
+        <h5 class="text-gold">Contacto Admisiones</h5>
+        <p class="opacity-75 small">Secretaria Docente: Damayanti Sánchez<br>secdocestbcor@gmail.com<br>Móvil: 54809519</p>
+        <a href="#" class="btn btn-gold btn-sm rounded-pill px-4">Solicitar Información</a>
+      </div>
+    </div>
+    <hr class="opacity-25 my-4">
+    <div class="row">
+      <div class="col text-center">
+        <p class="small opacity-50 mb-0">&copy; 2024 Seminario Teológico Bautista de Cuba Oriental. Convención Bautista de Cuba Oriental.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script src="js/main.js"></script>
-<script>AOS.init();</script>
+<script>
+  AOS.init({ duration: 1000, once: true });
+</script>
 </body>
 </html>
