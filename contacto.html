@@ -5,17 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contacto · Seminario Teológico Bautista</title>
   
-  <!-- Bootstrap 5 + Iconos -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Fuentes Premium -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Librerías CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-  
-  <!-- Estilos Propios -->
   <link rel="stylesheet" href="css/main.css">
   
   <style>
@@ -91,18 +84,39 @@
     .copy-email-btn:hover {
       color: var(--primary-sacred-gold) !important;
     }
-    .toast-custom {
-      position: fixed;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--primary-deep-teal);
-      color: white;
-      padding: 12px 30px;
-      border-radius: 50px;
-      box-shadow: var(--shadow-hover);
-      z-index: 9999;
+    
+    /* Estilos para el formulario con EmailJS */
+    .form-status {
       display: none;
+      padding: 15px 20px;
+      border-radius: 16px;
+      margin-top: 20px;
+      text-align: center;
+      font-weight: 500;
+    }
+    .form-status.success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    .form-status.error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+    .form-status.sending {
+      background: #fff3cd;
+      color: #856404;
+      border: 1px solid #ffeeba;
+    }
+    .btn-sending {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+    .spinner-border-sm {
+      width: 1.2rem;
+      height: 1.2rem;
+      border-width: 0.15em;
     }
   </style>
 </head>
@@ -202,7 +216,7 @@
 <section class="py-5 bg-light-sage">
   <div class="container">
     <div class="row g-5">
-      <!-- Columna Izquierda: Mapa y Ubicación -->
+      <!-- Columna Izquierda: Mapa -->
       <div class="col-lg-7" data-aos="fade-right">
         <h3 class="font-serif mb-4"><i class="fas fa-map me-2 text-gold"></i>Nuestra Ubicación</h3>
         
@@ -222,14 +236,14 @@
             <div class="p-3 bg-white rounded-4 shadow-sm">
               <i class="fas fa-bus text-gold mb-2"></i>
               <h6 class="mb-1">Transporte Público</h6>
-              <p class="small text-muted mb-0">Rutas de ómnibus desde Santiago de Cuba y El Cobre. Parada frente al Seminario.</p>
+              <p class="small text-muted mb-0">Rutas de ómnibus desde Santiago de Cuba y El Cobre.</p>
             </div>
           </div>
           <div class="col-sm-6">
             <div class="p-3 bg-white rounded-4 shadow-sm">
               <i class="fas fa-church text-gold mb-2"></i>
-              <h6 class="mb-1">Puntos de Referencia</h6>
-              <p class="small text-muted mb-0">A 7½ km del Poblado de El Cobre (Santuario de la Virgen de la Caridad).</p>
+              <h6 class="mb-1">Punto de Referencia</h6>
+              <p class="small text-muted mb-0">A 7½ km del Poblado de El Cobre.</p>
             </div>
           </div>
         </div>
@@ -243,61 +257,67 @@
             <a href="#" class="social-link-large"><i class="fab fa-youtube"></i></a>
             <a href="#" class="social-link-large"><i class="fab fa-whatsapp"></i></a>
           </div>
-          <p class="small text-muted mt-3">
-            <i class="fas fa-globe me-1"></i> Boletines y noticias periódicas disponibles en nuestras redes.
-          </p>
         </div>
       </div>
       
-      <!-- Columna Derecha: Formulario de Contacto -->
+      <!-- Columna Derecha: Formulario con EmailJS -->
       <div class="col-lg-5" data-aos="fade-left">
         <div class="card shadow-lg border-0 rounded-4 bg-white">
           <div class="card-body p-4 p-lg-5">
             <h3 class="font-serif mb-4">Envíanos un Mensaje</h3>
             <p class="text-muted mb-4">Completa el formulario y te responderemos a la brevedad.</p>
             
+            <!-- FORMULARIO CON EMAILJS -->
             <form id="contactForm">
+              <input type="hidden" name="contact_number" id="contact_number">
+              
               <div class="mb-3">
                 <label class="form-label fw-semibold">Nombre Completo <span class="text-brick">*</span></label>
-                <input type="text" class="form-control form-control-immersive w-100" placeholder="Ej. María Pérez Rodríguez" required>
+                <input type="text" class="form-control form-control-immersive w-100" name="nombre" id="nombre" placeholder="Ej. María Pérez Rodríguez" required>
               </div>
               
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label class="form-label fw-semibold">Correo Electrónico <span class="text-brick">*</span></label>
-                  <input type="email" class="form-control form-control-immersive w-100" placeholder="correo@ejemplo.com" required>
+                  <input type="email" class="form-control form-control-immersive w-100" name="email" id="email" placeholder="correo@ejemplo.com" required>
                 </div>
                 <div class="col-md-6 mb-3">
                   <label class="form-label fw-semibold">Teléfono</label>
-                  <input type="tel" class="form-control form-control-immersive w-100" placeholder="+53">
+                  <input type="tel" class="form-control form-control-immersive w-100" name="telefono" id="telefono" placeholder="+53">
                 </div>
               </div>
               
               <div class="mb-3">
                 <label class="form-label fw-semibold">Iglesia Local (si aplica)</label>
-                <input type="text" class="form-control form-control-immersive w-100" placeholder="Nombre de tu iglesia">
+                <input type="text" class="form-control form-control-immersive w-100" name="iglesia" id="iglesia" placeholder="Nombre de tu iglesia">
               </div>
               
               <div class="mb-3">
                 <label class="form-label fw-semibold">Asunto <span class="text-brick">*</span></label>
-                <select class="form-select form-control-immersive w-100" required>
+                <select class="form-select form-control-immersive w-100" name="asunto" id="asunto" required>
                   <option value="" selected disabled>Selecciona un motivo</option>
-                  <option value="admisiones">Información sobre Admisiones</option>
-                  <option value="programas">Consulta sobre Programas Académicos</option>
-                  <option value="docentes">Contactar a un Docente</option>
-                  <option value="administracion">Asunto Administrativo</option>
-                  <option value="otro">Otro</option>
+                  <option value="Información sobre Admisiones">Información sobre Admisiones</option>
+                  <option value="Consulta sobre Programas Académicos">Consulta sobre Programas Académicos</option>
+                  <option value="Contactar a un Docente">Contactar a un Docente</option>
+                  <option value="Asunto Administrativo">Asunto Administrativo</option>
+                  <option value="Ofrenda/Donación">Ofrenda / Donación</option>
+                  <option value="Otro">Otro</option>
                 </select>
               </div>
               
               <div class="mb-4">
                 <label class="form-label fw-semibold">Mensaje <span class="text-brick">*</span></label>
-                <textarea class="form-control form-control-immersive w-100" rows="4" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                <textarea class="form-control form-control-immersive w-100" name="mensaje" id="mensaje" rows="4" placeholder="Escribe tu mensaje aquí..." required></textarea>
               </div>
               
-              <button type="submit" class="btn btn-teal w-100 rounded-pill py-3">
-                <i class="fas fa-paper-plane me-2"></i>Enviar Mensaje
+              <button type="submit" class="btn btn-teal w-100 rounded-pill py-3" id="submitBtn">
+                <i class="fas fa-paper-plane me-2"></i>
+                <span class="btn-text">Enviar Mensaje</span>
+                <span class="spinner-border spinner-border-sm ms-2 d-none" role="status"></span>
               </button>
+              
+              <!-- Mensajes de estado -->
+              <div id="formStatus" class="form-status"></div>
               
               <p class="small text-muted text-center mt-3 mb-0">
                 <i class="fas fa-clock me-1"></i> Tiempo estimado de respuesta: 24-48 horas hábiles.
@@ -317,7 +337,6 @@
       <span class="text-gold fw-bold text-uppercase small">Contacto Directo</span>
       <h2 class="display-5 font-serif">Directorio <span class="text-teal">Administrativo</span></h2>
       <div class="divider mx-auto"></div>
-      <p class="lead text-muted">Puedes contactar directamente a cualquier miembro de nuestro equipo</p>
     </div>
     
     <div class="row g-4">
@@ -327,30 +346,23 @@
           <h5 class="mb-1">MA. Joel Gutiérrez Cabrera</h5>
           <p class="text-gold fw-semibold mb-2">Rector</p>
           <p class="small mb-1"><i class="fas fa-envelope me-2"></i><a href="mailto:joelgc242@gmail.com" class="text-muted text-decoration-none">joelgc242@gmail.com</a></p>
-          <p class="small mb-0"><i class="fas fa-chalkboard-teacher me-2"></i>Griego I y II</p>
         </div>
-        
         <div class="directory-card">
           <h5 class="mb-1">Ms. Alsuby Alba Regalado</h5>
           <p class="text-gold fw-semibold mb-2">Vicerrector</p>
           <p class="small mb-1"><i class="fas fa-envelope me-2"></i><a href="mailto:mifamiia.cuba@gmail.com" class="text-muted text-decoration-none">mifamiia.cuba@gmail.com</a></p>
-          <p class="small mb-0"><i class="fas fa-chalkboard-teacher me-2"></i>Metodología de la Investigación</p>
         </div>
-        
         <div class="directory-card">
           <h5 class="mb-1">MA. Amado Ramírez Oliveros</h5>
-          <p class="text-gold fw-semibold mb-2">Preparación Ministerial</p>
+          <p class="text-gold fw-semibold mb-2">Prep. Ministerial</p>
           <p class="small mb-1"><i class="fas fa-envelope me-2"></i><a href="mailto:amadoyude@gmail.com" class="text-muted text-decoration-none">amadoyude@gmail.com</a></p>
-          <p class="small mb-1"><i class="fas fa-phone me-2"></i>53737647</p>
-          <p class="small mb-0"><i class="fas fa-chalkboard-teacher me-2"></i>Homilética</p>
+          <p class="small"><i class="fas fa-phone me-2"></i>53737647</p>
         </div>
-        
         <div class="directory-card">
           <h5 class="mb-1">Diorlis Hernández Hernández</h5>
           <p class="text-gold fw-semibold mb-2">Capellán</p>
           <p class="small mb-1"><i class="fas fa-envelope me-2"></i><a href="mailto:diorlis@nauta.cu" class="text-muted text-decoration-none">diorlis@nauta.cu</a></p>
-          <p class="small mb-1"><i class="fas fa-phone me-2"></i>58056621</p>
-          <p class="small mb-0"><i class="fas fa-chalkboard-teacher me-2"></i>Historia y Principios Bautistas</p>
+          <p class="small"><i class="fas fa-phone me-2"></i>58056621</p>
         </div>
       </div>
       
@@ -360,28 +372,23 @@
           <h5 class="mb-1">Addiel Rodríguez Hernández</h5>
           <p class="text-gold fw-semibold mb-2">Decano</p>
           <p class="small mb-1"><i class="fas fa-envelope me-2"></i><a href="mailto:addiel689@nauta.cu" class="text-muted text-decoration-none">addiel689@nauta.cu</a></p>
-          <p class="small mb-1"><i class="fas fa-phone me-2"></i>51901150</p>
-          <p class="small mb-0"><i class="fas fa-chalkboard-teacher me-2"></i>Cristología</p>
+          <p class="small"><i class="fas fa-phone me-2"></i>51901150</p>
         </div>
-        
         <div class="directory-card">
           <h5 class="mb-1">Eddy Borrero Fernández</h5>
           <p class="text-gold fw-semibold mb-2">Administrador</p>
           <p class="small mb-1"><i class="fas fa-envelope me-2"></i><a href="mailto:edyborrerofernandez@gmail.com" class="text-muted text-decoration-none">edyborrerofernandez@gmail.com</a></p>
-          <p class="small mb-0"><i class="fas fa-phone me-2"></i>53402503</p>
+          <p class="small"><i class="fas fa-phone me-2"></i>53402503</p>
         </div>
-        
         <div class="directory-card">
           <h5 class="mb-1">Mariolis García Galindo</h5>
           <p class="text-gold fw-semibold mb-2">Directora Interna</p>
-          <p class="small mb-0"><i class="fas fa-home me-2"></i>Residencias Estudiantiles</p>
+          <p class="small"><i class="fas fa-home me-2"></i>Residencias Estudiantiles</p>
         </div>
-        
         <div class="directory-card">
           <h5 class="mb-1">MA. Vitalia de la Torre Ayala</h5>
-          <p class="text-gold fw-semibold mb-2">Directora Centros Bíblicos</p>
-          <p class="small mb-1"><i class="fas fa-envelope me-2"></i><a href="mailto:vitaliadelatorreayala@gmail.com" class="text-muted text-decoration-none">vitaliadelatorreayala@gmail.com</a></p>
-          <p class="small mb-0"><i class="fas fa-chalkboard-teacher me-2"></i>Metodología de la Enseñanza</p>
+          <p class="text-gold fw-semibold mb-2">Dir. Centros Bíblicos</p>
+          <p class="small"><i class="fas fa-envelope me-2"></i><a href="mailto:vitaliadelatorreayala@gmail.com" class="text-muted text-decoration-none">vitaliadelatorreayala@gmail.com</a></p>
         </div>
       </div>
       
@@ -391,35 +398,20 @@
           <h5 class="mb-1">Damayanti Sánchez Duharte</h5>
           <p class="text-gold fw-semibold mb-2">Secretaria Docente</p>
           <p class="small mb-1"><i class="fas fa-envelope me-2"></i><a href="mailto:dsanchezduharte@gmail.com" class="text-muted text-decoration-none">dsanchezduharte@gmail.com</a></p>
-          <p class="small mb-0"><i class="fas fa-phone me-2"></i>54809519</p>
+          <p class="small"><i class="fas fa-phone me-2"></i>54809519</p>
         </div>
-        
         <div class="directory-card">
           <h5 class="mb-1">Yeni Evelia Yirat Zapata</h5>
-          <p class="text-gold fw-semibold mb-2">Secretaria Procesadora de Datos</p>
-          <p class="small mb-0"><i class="fas fa-phone me-2"></i>53842068</p>
+          <p class="text-gold fw-semibold mb-2">Sec. Procesadora de Datos</p>
+          <p class="small"><i class="fas fa-phone me-2"></i>53842068</p>
         </div>
-        
         <div class="directory-card">
           <h5 class="mb-1">Zoe Del Rio Matos</h5>
           <p class="text-gold fw-semibold mb-2">Secretaria Centros Bíblicos</p>
         </div>
-        
         <div class="directory-card bg-teal text-white" style="border-left-color: var(--primary-sacred-gold);">
-          <h5 class="mb-1"><i class="fas fa-server me-2"></i>Información Técnica</h5>
-          <p class="small mb-1 opacity-90">Servidor: Windows Server 2022</p>
-          <p class="small mb-0 opacity-75">Soporte técnico: Contactar a Administración</p>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Nota sobre contacto -->
-    <div class="row mt-5">
-      <div class="col-12">
-        <div class="alert alert-light border-0 rounded-4 p-4 shadow-sm text-center" data-aos="fade-up">
-          <i class="fas fa-clock text-gold fa-2x mb-3"></i>
-          <h5 class="font-serif">Horario de Atención</h5>
-          <p class="mb-0">Lunes a Viernes: 8:00 AM - 4:00 PM | Sábados: 9:00 AM - 12:00 PM (Solo eventos programados) | Domingos: Cerrado</p>
+          <h5 class="mb-1"><i class="fas fa-clock me-2"></i>Horario de Atención</h5>
+          <p class="small mb-0 opacity-90">Lunes a Viernes: 8:00 AM - 4:00 PM</p>
         </div>
       </div>
     </div>
@@ -427,7 +419,7 @@
 </section>
 
 <!-- TOAST DE CONFIRMACIÓN -->
-<div id="copyToast" class="toast-custom">
+<div id="copyToast" style="position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: var(--primary-deep-teal); color: white; padding: 12px 30px; border-radius: 50px; box-shadow: var(--shadow-hover); z-index: 9999; display: none;">
   <i class="fas fa-check-circle me-2"></i> ¡Correo copiado al portapapeles!
 </div>
 
@@ -438,7 +430,6 @@
       <div class="col-lg-4 mb-4">
         <i class="fas fa-cross fa-2x text-gold mb-3"></i>
         <p class="opacity-75">Formando pastores y líderes cristianos para la edificación del pueblo de Dios desde 1949.</p>
-        <p class="small opacity-50 mt-3">Bajo los auspicios de la Convención Bautista de Cuba Oriental</p>
       </div>
       <div class="col-lg-2 col-md-4 mb-4">
         <h5 class="text-gold">Enlaces</h5>
@@ -457,19 +448,15 @@
         </ul>
       </div>
       <div class="col-lg-3 col-md-4 mb-4">
-        <h5 class="text-gold">Contacto Rápido</h5>
+        <h5 class="text-gold">Contacto</h5>
         <p class="opacity-75 small">Carretera Central Km 13½, La Caoba<br>Santiago de Cuba 90100</p>
         <p class="opacity-75 small">+53 22 61 23 45<br>secdocestbcor@gmail.com</p>
-        <a href="#" class="btn btn-gold btn-sm rounded-pill px-4 mt-2">Donar Ahora</a>
       </div>
     </div>
     <hr class="opacity-25 my-4">
     <div class="row">
-      <div class="col-md-6">
-        <p class="small opacity-50 mb-0">&copy; 2026 Seminario Teológico Bautista de Cuba Oriental.</p>
-      </div>
-      <div class="col-md-6 text-md-end">
-        <p class="small opacity-50 mb-0">Todos los derechos reservados</p>
+      <div class="col text-center">
+        <p class="small opacity-50 mb-0">&copy; 2024 Seminario Teológico Bautista de Cuba Oriental. Todos los derechos reservados.</p>
       </div>
     </div>
   </div>
@@ -478,11 +465,109 @@
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
 <script src="js/main.js"></script>
+
 <script>
+  // Inicializar AOS
   AOS.init({ duration: 1000, once: true });
   
-  // Funcionalidad para copiar correo
+  // =============================================
+  // CONFIGURACIÓN DE EMAILJS
+  // =============================================
+  
+  // ⚠️ REEMPLAZA ESTOS VALORES CON LOS DE TU CUENTA
+  const EMAILJS_PUBLIC_KEY = "kr8cihUL5uK-1tPGH";
+  const EMAILJS_SERVICE_ID = "service_fimbksu";
+  const EMAILJS_TEMPLATE_ID = "template_yhpfjbw";
+  
+  // Inicializar EmailJS
+  (function() {
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+  })();
+  
+  // Generar número de contacto único
+  document.getElementById('contact_number').value = Math.random() * 100000 | 0;
+  
+  // Manejar el envío del formulario
+  const form = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const btnText = submitBtn.querySelector('.btn-text');
+  const spinner = submitBtn.querySelector('.spinner-border');
+  const formStatus = document.getElementById('formStatus');
+  
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Validar campos requeridos
+    const nombre = document.getElementById('nombre').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const asunto = document.getElementById('asunto').value;
+    const mensaje = document.getElementById('mensaje').value.trim();
+    
+    if (!nombre || !email || !asunto || !mensaje) {
+      showStatus('Por favor, completa todos los campos requeridos.', 'error');
+      return;
+    }
+    
+    // Validar formato de email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      showStatus('Por favor, ingresa un correo electrónico válido.', 'error');
+      return;
+    }
+    
+    // Mostrar estado de envío
+    setFormSending(true);
+    showStatus('Enviando mensaje...', 'sending');
+    
+    // Enviar con EmailJS
+    emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, this)
+      .then(function(response) {
+        console.log('SUCCESS!', response.status, response.text);
+        showStatus('¡Mensaje enviado con éxito! Te responderemos pronto.', 'success');
+        form.reset();
+        document.getElementById('contact_number').value = Math.random() * 100000 | 0;
+        setFormSending(false);
+      }, function(error) {
+        console.log('FAILED...', error);
+        showStatus('Error al enviar el mensaje. Por favor, intenta de nuevo o contáctanos por teléfono.', 'error');
+        setFormSending(false);
+      });
+  });
+  
+  function setFormSending(isSending) {
+    if (isSending) {
+      submitBtn.disabled = true;
+      submitBtn.classList.add('btn-sending');
+      spinner.classList.remove('d-none');
+      btnText.textContent = 'Enviando...';
+    } else {
+      submitBtn.disabled = false;
+      submitBtn.classList.remove('btn-sending');
+      spinner.classList.add('d-none');
+      btnText.textContent = 'Enviar Mensaje';
+    }
+  }
+  
+  function showStatus(message, type) {
+    formStatus.textContent = message;
+    formStatus.className = 'form-status ' + type;
+    formStatus.style.display = 'block';
+    
+    if (type === 'success' || type === 'error') {
+      setTimeout(() => {
+        formStatus.style.display = 'none';
+      }, 5000);
+    }
+  }
+  
+  // =============================================
+  // COPIAR CORREO AL PORTAPAPELES
+  // =============================================
   document.querySelectorAll('.copy-email-btn').forEach(btn => {
     btn.addEventListener('click', function() {
       const email = this.dataset.email;
@@ -497,13 +582,7 @@
       });
     });
   });
-  
-  // Manejo del formulario de contacto
-  document.getElementById('contactForm')?.addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.');
-    this.reset();
-  });
 </script>
+
 </body>
 </html>
