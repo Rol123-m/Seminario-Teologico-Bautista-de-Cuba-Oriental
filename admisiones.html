@@ -10,13 +10,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
   <link rel="stylesheet" href="css/main.css">
-  <!-- PWA Manifest -->
-<link rel="manifest" href="manifest.json">
+<!-- PWA Manifest - RUTA ABSOLUTA -->
+<link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#1a3c34">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="STBCOR">
-<link rel="apple-touch-icon" href="images/icons/icon-192x192.png">
+<link rel="apple-touch-icon" href="/images/icons/icon-192x192.png">
   
   <style>
     .step-card {
@@ -446,7 +446,7 @@
 
   <!-- Registrar Service Worker -->
 
-  
+
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker.register('/sw.js')
