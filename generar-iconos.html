@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Generador de Iconos PWA · STBCOR</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background: #f5f2e9; }
+    canvas { border: 1px solid #ddd; margin: 5px; }
+    .container { max-width: 800px; margin: 0 auto; }
+    button { padding: 15px 30px; font-size: 16px; background: #1a3c34; color: white; border: none; border-radius: 10px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎨 Generador de Iconos PWA - STBCOR</h1>
+    <p>Sube una imagen cuadrada (mínimo 512x512) con el logo del Seminario.</p>
+    <input type="file" id="upload" accept="image/png, image/jpeg, image/svg+xml">
+    
+    <div id="preview"></div>
+    
+    <button onclick="generarIconos()">Generar todos los iconos</button>
+    <p class="small">Los iconos se descargarán automáticamente. Guárdalos en <code>/images/icons/</code></p>
+    
+    <canvas id="canvas" style="display: none;"></canvas>
+  </div>
+  
+  <script>
+    const tamanos = [72, 96, 128, 144, 152, 192, 384, 512];
+    let imagenOriginal = null;
+    
+    document.getElementById('upload').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        const img = new Image();
+        img.onload = function() {
+          imagenOriginal = img;
+          document.getElementById('preview').innerHTML = '<p>✅ Imagen cargada: ' + img.width + 'x' + img.height + '</p>';
+        };
+        img.src = event.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+    
+    function generarIconos() {
+      if (!imagenOriginal) {
+        alert('Primero sube una imagen');
+        return;
+      }
+      
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+      
+      tamanos.forEach(tamano => {
+        canvas.width = tamano;
+        canvas.height = tamano;
+        
+        // Dibujar imagen
+        ctx.fillStyle = '#1a3c34';
+        ctx.fillRect(0, 0, tamano, tamano);
+        
+        // Calcular proporciones
+        const size = Math.min(imagenOriginal.width, imagenOriginal.height);
+        const sx = (imagenOriginal.width - size) / 2;
+        const sy = (imagenOriginal.height - size) / 2;
+        
+        ctx.drawImage(imagenOriginal, sx, sy, size, size, 0, 0, tamano, tamano);
+        
+        // Agregar borde dorado
+        ctx.strokeStyle = '#c4a035';
+        ctx.lineWidth = tamano * 0.03;
+        ctx.strokeRect(0, 0, tamano, tamano);
+        
+        // Descargar
+        const link = document.createElement('a');
+        link.download = `icon-${tamano}x${tamano}.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      });
+      
+      // También generar icono maskable (con padding)
+      canvas.width = 512;
+      canvas.height = 512;
+      ctx.fillStyle = '#1a3c34';
+      ctx.fillRect(0, 0, 512, 512);
+      
+      const padding = 80;
+      ctx.drawImage(imagenOriginal, 0, 0, imagenOriginal.width, imagenOriginal.height, padding, padding, 512 - padding*2, 512 - padding*2);
+      
+      ctx.strokeStyle = '#c4a035';
+      ctx.lineWidth = 15;
+      ctx.strokeRect(0, 0, 512, 512);
+      
+      const link = document.createElement('a');
+      link.download = `maskable-icon.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+      
+      alert('✅ Todos los iconos generados. Guarda la carpeta en /images/icons/');
+    }
+  </script>
+</body>
+</html>

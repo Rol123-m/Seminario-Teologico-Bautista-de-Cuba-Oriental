@@ -5,11 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contacto · Seminario Teológico Bautista</title>
   
+  <!-- Bootstrap 5 + Iconos -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Fuentes Premium -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Librerías CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  
+  <!-- Estilos Propios -->
   <link rel="stylesheet" href="css/main.css">
+
+  <!-- PWA Manifest -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1a3c34">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="STBCOR">
+<link rel="apple-touch-icon" href="images/icons/icon-192x192.png">
   
   <style>
     .contact-card {
@@ -32,7 +47,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 20px;
+      margin: 0 auto 20px;
     }
     .directory-card {
       background: white;
@@ -47,8 +62,9 @@
       color: white;
       transform: translateX(5px);
     }
-    .directory-card:hover .text-muted {
-      color: rgba(255,255,255,0.7) !important;
+    .directory-card:hover .text-muted,
+    .directory-card:hover .opacity-75 {
+      color: rgba(255,255,255,0.8) !important;
     }
     .directory-card:hover a {
       color: var(--primary-sacred-gold) !important;
@@ -77,6 +93,31 @@
       box-shadow: var(--shadow-hover);
       border: 5px solid white;
     }
+    .map-static {
+      position: relative;
+      height: 300px;
+      overflow: hidden;
+    }
+    .map-static img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .map-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(26,60,52,0.7) 0%, rgba(0,0,0,0.3) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
     .copy-email-btn {
       cursor: pointer;
       transition: var(--transition-smooth);
@@ -85,7 +126,7 @@
       color: var(--primary-sacred-gold) !important;
     }
     
-    /* Estilos para el formulario con EmailJS */
+    /* Estados del formulario */
     .form-status {
       display: none;
       padding: 15px 20px;
@@ -113,10 +154,20 @@
       opacity: 0.7;
       cursor: not-allowed;
     }
-    .spinner-border-sm {
-      width: 1.2rem;
-      height: 1.2rem;
-      border-width: 0.15em;
+    
+    /* Toast de confirmación */
+    .toast-custom {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--primary-deep-teal);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 50px;
+      box-shadow: var(--shadow-hover);
+      z-index: 9999;
+      display: none;
     }
   </style>
 </head>
@@ -168,7 +219,7 @@
     <div class="row g-4">
       <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
         <div class="contact-card text-center">
-          <div class="contact-icon-large mx-auto">
+          <div class="contact-icon-large">
             <i class="fas fa-map-marker-alt fa-2x text-gold"></i>
           </div>
           <h4 class="font-serif mb-3">Dirección Física</h4>
@@ -183,7 +234,7 @@
       
       <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
         <div class="contact-card text-center">
-          <div class="contact-icon-large mx-auto">
+          <div class="contact-icon-large">
             <i class="fas fa-phone-alt fa-2x text-gold"></i>
           </div>
           <h4 class="font-serif mb-3">Teléfono Principal</h4>
@@ -197,7 +248,7 @@
       
       <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
         <div class="contact-card text-center">
-          <div class="contact-icon-large mx-auto">
+          <div class="contact-icon-large">
             <i class="fas fa-envelope fa-2x text-gold"></i>
           </div>
           <h4 class="font-serif mb-3">Correo Electrónico</h4>
@@ -216,19 +267,30 @@
 <section class="py-5 bg-light-sage">
   <div class="container">
     <div class="row g-5">
-      <!-- Columna Izquierda: Mapa -->
+      <!-- Columna Izquierda: Mapa Estático -->
       <div class="col-lg-7" data-aos="fade-right">
         <h3 class="font-serif mb-4"><i class="fas fa-map me-2 text-gold"></i>Nuestra Ubicación</h3>
         
-        <div class="map-container">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3753.405823456789!2d-75.8256789!3d20.0531234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDAzJzExLjMiTiA3NcKwNDknMzIuNCJX!5e0!3m2!1ses!2scu!4v1620000000000!5m2!1ses!2scu" 
-            width="100%" 
-            height="400" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy">
-          </iframe>
+        <!-- MAPA ESTÁTICO (sin errores en local) -->
+        <div class="map-container bg-white">
+          <div class="map-static">
+            <img src="https://images.pexels.com/photos/290595/pexels-photo-290595.jpeg?auto=compress&cs=tinysrgb&w=1200" 
+                 alt="Seminario Teológico Bautista - La Caoba">
+            <div class="map-overlay">
+              <i class="fas fa-map-pin fa-3x text-gold mb-3"></i>
+              <h4 class="font-serif text-white">Seminario Teológico Bautista</h4>
+              <p class="mb-3">Carretera Central Km 13½, La Caoba</p>
+              <a href="https://maps.google.com/?q=20.0531234,-75.8256789" target="_blank" class="btn btn-gold rounded-pill px-4">
+                <i class="fas fa-external-link-alt me-1"></i> Ver en Google Maps
+              </a>
+            </div>
+          </div>
+          <div class="p-4 text-center">
+            <p class="mb-0 text-muted">
+              <i class="fas fa-info-circle me-1"></i> 
+              A 7½ km del Poblado de El Cobre · Santiago de Cuba 90100
+            </p>
+          </div>
         </div>
         
         <div class="row mt-4 g-3">
@@ -243,7 +305,7 @@
             <div class="p-3 bg-white rounded-4 shadow-sm">
               <i class="fas fa-church text-gold mb-2"></i>
               <h6 class="mb-1">Punto de Referencia</h6>
-              <p class="small text-muted mb-0">A 7½ km del Poblado de El Cobre.</p>
+              <p class="small text-muted mb-0">A 7½ km del Cobre.</p>
             </div>
           </div>
         </div>
@@ -257,6 +319,9 @@
             <a href="#" class="social-link-large"><i class="fab fa-youtube"></i></a>
             <a href="#" class="social-link-large"><i class="fab fa-whatsapp"></i></a>
           </div>
+          <p class="small text-muted mt-3">
+            <i class="fas fa-newspaper me-1"></i> Boletines y noticias disponibles en nuestras redes.
+          </p>
         </div>
       </div>
       
@@ -269,8 +334,6 @@
             
             <!-- FORMULARIO CON EMAILJS -->
             <form id="contactForm">
-              <input type="hidden" name="contact_number" id="contact_number">
-              
               <div class="mb-3">
                 <label class="form-label fw-semibold">Nombre Completo <span class="text-brick">*</span></label>
                 <input type="text" class="form-control form-control-immersive w-100" name="nombre" id="nombre" placeholder="Ej. María Pérez Rodríguez" required>
@@ -419,7 +482,7 @@
 </section>
 
 <!-- TOAST DE CONFIRMACIÓN -->
-<div id="copyToast" style="position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: var(--primary-deep-teal); color: white; padding: 12px 30px; border-radius: 50px; box-shadow: var(--shadow-hover); z-index: 9999; display: none;">
+<div id="copyToast" class="toast-custom">
   <i class="fas fa-check-circle me-2"></i> ¡Correo copiado al portapapeles!
 </div>
 
@@ -465,10 +528,7 @@
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-
-<!-- EmailJS -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
 <script src="js/main.js"></script>
 
 <script>
@@ -478,19 +538,15 @@
   // =============================================
   // CONFIGURACIÓN DE EMAILJS
   // =============================================
-  
-  // ⚠️ REEMPLAZA ESTOS VALORES CON LOS DE TU CUENTA
   const EMAILJS_PUBLIC_KEY = "kr8cihUL5uK-1tPGH";
   const EMAILJS_SERVICE_ID = "service_fimbksu";
-  const EMAILJS_TEMPLATE_ID = "template_yhpfjbw";
+  const EMAILJS_TEMPLATE_ID = "template_fhutmtg";
   
   // Inicializar EmailJS
   (function() {
     emailjs.init(EMAILJS_PUBLIC_KEY);
+    console.log('✅ EmailJS inicializado');
   })();
-  
-  // Generar número de contacto único
-  document.getElementById('contact_number').value = Math.random() * 100000 | 0;
   
   // Manejar el envío del formulario
   const form = document.getElementById('contactForm');
@@ -509,32 +565,37 @@
     const mensaje = document.getElementById('mensaje').value.trim();
     
     if (!nombre || !email || !asunto || !mensaje) {
-      showStatus('Por favor, completa todos los campos requeridos.', 'error');
+      showStatus('❌ Por favor, completa todos los campos requeridos.', 'error');
       return;
     }
     
     // Validar formato de email
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      showStatus('Por favor, ingresa un correo electrónico válido.', 'error');
+      showStatus('❌ Por favor, ingresa un correo electrónico válido.', 'error');
       return;
     }
     
     // Mostrar estado de envío
     setFormSending(true);
-    showStatus('Enviando mensaje...', 'sending');
+    showStatus('⏳ Enviando mensaje...', 'sending');
     
     // Enviar con EmailJS
     emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, this)
       .then(function(response) {
-        console.log('SUCCESS!', response.status, response.text);
-        showStatus('¡Mensaje enviado con éxito! Te responderemos pronto.', 'success');
+        console.log('✅ ÉXITO!', response.status);
+        showStatus('✅ ¡Mensaje enviado con éxito! Te responderemos pronto.', 'success');
         form.reset();
-        document.getElementById('contact_number').value = Math.random() * 100000 | 0;
         setFormSending(false);
       }, function(error) {
-        console.log('FAILED...', error);
-        showStatus('Error al enviar el mensaje. Por favor, intenta de nuevo o contáctanos por teléfono.', 'error');
+        console.error('❌ ERROR:', error);
+        let errorMsg = 'Error al enviar el mensaje. ';
+        if (error.status === 412) {
+          errorMsg += 'Revisa la configuración de la plantilla en EmailJS.';
+        } else {
+          errorMsg += 'Intenta de nuevo o contáctanos por teléfono.';
+        }
+        showStatus('❌ ' + errorMsg, 'error');
         setFormSending(false);
       });
   });
@@ -581,6 +642,42 @@
         alert('Correo: ' + email);
       });
     });
+  });
+ 
+
+
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then((registration) => {
+          console.log('✅ Service Worker registrado:', registration.scope);
+        })
+        .catch((error) => {
+          console.log('❌ Error al registrar Service Worker:', error);
+        });
+    });
+  }
+  
+  // Botón de instalación (aparece automáticamente en navegadores compatibles)
+  let deferredPrompt;
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    
+    // Mostrar botón de instalación personalizado (opcional)
+    const installBtn = document.getElementById('installBtn');
+    if (installBtn) {
+      installBtn.style.display = 'block';
+      installBtn.addEventListener('click', () => {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('Usuario instaló la PWA');
+          }
+          deferredPrompt = null;
+        });
+      });
+    }
   });
 </script>
 
