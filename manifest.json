@@ -2,14 +2,14 @@
   "name": "Seminario Teológico Bautista de Cuba Oriental",
   "short_name": "STBCOR",
   "description": "Formando pastores y líderes cristianos desde 1949 en Santiago de Cuba",
-  "start_url": "/index.html",
-  "scope": "/",
+  "start_url": ".",
+  "scope": ".",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#1a3c34",
   "theme_color": "#1a3c34",
   "categories": ["education", "religion"],
-  "lang": "es-ES",
+  "lang": "es",
   "dir": "ltr",
   "icons": [
     {
@@ -73,38 +73,40 @@
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "Página principal del Seminario"
+      "label": "Pantalla de inicio del seminario"
     },
     {
       "src": "images/screenshots/home-mobile.png",
       "sizes": "720x1280",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "Vista móvil del Seminario"
+      "label": "Vista movil del seminario"
     }
   ],
   "shortcuts": [
     {
       "name": "Admisiones",
-      "short_name": "Admisión",
-      "description": "Proceso de admisión al Seminario",
-      "url": "/admisiones.html",
+      "short_name": "Admision",
+      "description": "Proceso de admision al Seminario",
+      "url": "admisiones.html",
       "icons": [
         {
           "src": "images/icons/admisiones.png",
-          "sizes": "96x96"
+          "sizes": "96x96",
+          "type": "image/png"
         }
       ]
     },
     {
       "name": "Contacto",
       "short_name": "Contacto",
-      "description": "Contáctanos",
-      "url": "/contacto.html",
+      "description": "Contactanos",
+      "url": "contacto.html",
       "icons": [
         {
           "src": "images/icons/contacto.png",
-          "sizes": "96x96"
+          "sizes": "96x96",
+          "type": "image/png"
         }
       ]
     },
@@ -112,11 +114,12 @@
       "name": "Aula Virtual",
       "short_name": "Aula",
       "description": "Acceso al campus virtual",
-      "url": "/login-intranet.html",
+      "url": "login-intranet.html",
       "icons": [
         {
           "src": "images/icons/aula.png",
-          "sizes": "96x96"
+          "sizes": "96x96",
+          "type": "image/png"
         }
       ]
     }
