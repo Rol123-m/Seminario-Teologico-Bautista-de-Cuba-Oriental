@@ -67,22 +67,6 @@
       "purpose": "maskable"
     }
   ],
-  "screenshots": [
-    {
-      "src": "images/screenshots/home.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "Pantalla de inicio del seminario"
-    },
-    {
-      "src": "images/screenshots/home-mobile.png",
-      "sizes": "720x1280",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Vista movil del seminario"
-    }
-  ],
   "shortcuts": [
     {
       "name": "Admisiones",
