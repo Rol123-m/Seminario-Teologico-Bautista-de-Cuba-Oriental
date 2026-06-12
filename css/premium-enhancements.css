@@ -1,0 +1,674 @@
+/* =============================================
+   MEJORAS PREMIUM E INMERSIVAS
+   ============================================= */
+
+/* ANIMACIONES AVANZADAS */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(196, 160, 53, 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(196, 160, 53, 0.6);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rotate-360 {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes scale-in-center {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* HERO SECTION MEJORADO */
+.hero {
+  position: relative;
+  background: linear-gradient(135deg, #1a3c34 0%, #2a5a4f 100%);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+  z-index: 1;
+  animation: float 6s ease-in-out infinite;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+  animation: zoom-in 20s ease-in-out infinite alternate;
+}
+
+@keyframes zoom-in {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
+.hero .container {
+  position: relative;
+  z-index: 5;
+}
+
+.hero h1 {
+  animation: slide-in-up 1.2s ease-out;
+  text-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+}
+
+.hero .badge {
+  animation: fade-in-up 1.5s ease-out 0.3s both;
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+.hero .lead {
+  animation: fade-in-up 1.5s ease-out 0.5s both;
+}
+
+.hero .d-flex {
+  animation: fade-in-up 1.5s ease-out 0.7s both;
+}
+
+/* DIVIDER MEJORADO */
+.divider {
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--primary-sacred-gold), transparent);
+  margin: 0 auto;
+  border-radius: 2px;
+  animation: slide-in-right 1s ease-out;
+}
+
+/* TARJETAS CON EFECTO GLASSMORPHISM */
+.value-card {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.value-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(196, 160, 53, 0.1), transparent);
+  animation: rotate-360 20s linear infinite;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.value-card:hover::before {
+  opacity: 1;
+}
+
+.card-decoration {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--primary-sacred-gold), transparent);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.value-card:hover .card-decoration {
+  opacity: 1;
+}
+
+/* BOTONES CON EFECTO RIPPLE */
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn:active::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* CARDS DE PROGRAMAS MEJORADAS */
+.program-card {
+  position: relative;
+  overflow: hidden;
+  background: white;
+}
+
+.program-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(196, 160, 53, 0) 0%, rgba(26, 60, 52, 0.1) 100%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+.program-card:hover::after {
+  opacity: 1;
+}
+
+.featured {
+  border: 2px solid var(--primary-sacred-gold) !important;
+  box-shadow: 0 15px 40px rgba(196, 160, 53, 0.25) !important;
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* MASTER CARDS */
+.master-card {
+  background: white;
+  border-radius: 24px;
+  transition: var(--transition-bounce);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+}
+
+.master-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(26, 60, 52, 0.1) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.master-card:hover::before {
+  opacity: 1;
+}
+
+.master-card:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(26, 60, 52, 0.2);
+  border-color: var(--primary-sacred-gold);
+}
+
+.master-card i {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* TIMELINE MEJORADA */
+.timeline-item {
+  position: relative;
+  padding-left: 30px;
+  opacity: 0;
+  animation: slide-in-left 0.8s ease-out forwards;
+}
+
+.timeline-item:nth-child(1) { animation-delay: 0.2s; }
+.timeline-item:nth-child(2) { animation-delay: 0.4s; }
+.timeline-item:nth-child(3) { animation-delay: 0.6s; }
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  top: 12px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--primary-sacred-gold);
+  box-shadow: 0 0 15px rgba(196, 160, 53, 0.4);
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.timeline-year {
+  color: var(--primary-sacred-gold);
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+/* GALERÍA CON OVERLAY MEJORADO */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  box-shadow: var(--shadow-soft);
+}
+
+.gallery-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(26, 60, 52, 0) 0%, rgba(26, 60, 52, 0.3) 100%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  z-index: 2;
+}
+
+.gallery-item:hover::before {
+  opacity: 1;
+}
+
+.gallery-item img {
+  transition: transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.15) rotate(2deg);
+}
+
+/* CAMPUS CAROUSEL MEJORADO */
+.campus-card {
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  height: 360px;
+  box-shadow: var(--shadow-soft);
+}
+
+.campus-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 0%, rgba(26, 60, 52, 0.5) 100%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  z-index: 3;
+}
+
+.campus-card:hover::before {
+  opacity: 1;
+}
+
+.campus-img {
+  transition: transform 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.campus-card:hover .campus-img {
+  transform: scale(1.2) rotate(1deg);
+}
+
+/* STAT CARDS MEJORADAS */
+.stat-card {
+  background: white;
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--primary-deep-teal) 0%, #2a5a4f 100%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  z-index: -1;
+}
+
+.stat-card:hover::before {
+  opacity: 1;
+}
+
+.stat-card:hover {
+  color: white;
+  transform: translateY(-12px) rotate(1deg);
+}
+
+.stat-card:hover i {
+  animation: rotate-360 1s linear;
+}
+
+/* FACULTY CARDS */
+.faculty-card {
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-bounce);
+}
+
+.faculty-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.faculty-card:hover::after {
+  left: 100%;
+}
+
+.avatar-circle {
+  animation: scale-in-center 0.6s ease-out;
+}
+
+.faculty-card:hover .avatar-circle {
+  animation: rotate-360 1s linear;
+}
+
+/* FORMULARIOS MEJORADOS */
+.form-control-immersive {
+  background: white;
+  border: 2px solid rgba(0, 0, 0, 0.05);
+  border-radius: 50px;
+  padding: 16px 24px;
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.form-control-immersive::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -100%;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--primary-sacred-gold), transparent);
+  transition: left 0.6s ease;
+}
+
+.form-control-immersive:focus::before {
+  left: 100%;
+}
+
+.form-control-immersive:focus {
+  border-color: var(--primary-sacred-gold);
+  box-shadow: 0 0 0 5px rgba(196, 160, 53, 0.15);
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(135deg, var(--primary-sacred-gold), var(--primary-deep-teal)) border-box;
+}
+
+/* NAVBAR MEJORADA */
+#mainNav {
+  transition: var(--transition-smooth);
+}
+
+#mainNav .navbar-brand {
+  animation: slide-in-right 0.8s ease-out;
+}
+
+.nav-link {
+  position: relative;
+  transition: var(--transition-smooth);
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--primary-sacred-gold);
+  transform: translateX(-50%);
+  transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.nav-link:hover::before,
+.nav-link.active::before {
+  width: 80%;
+}
+
+/* BACK TO TOP MEJORADO */
+.back-to-top {
+  position: fixed;
+  bottom: 40px;
+  right: 30px;
+  width: 55px;
+  height: 55px;
+  background: var(--primary-sacred-gold);
+  color: var(--primary-deep-teal);
+  border: none;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition-bounce);
+  z-index: 999;
+  box-shadow: 0 10px 30px rgba(196, 160, 53, 0.4);
+  cursor: pointer;
+}
+
+.back-to-top::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: white;
+  border-radius: 20px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  z-index: -1;
+}
+
+.back-to-top:hover::before {
+  opacity: 1;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  transform: scale(1.15) translateY(-8px);
+  border-radius: 30px;
+}
+
+/* SECCIÓN CON BACKGROUND ANIMADO */
+.animated-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.animated-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(196, 160, 53, 0.1), transparent);
+  animation: shimmer 3s infinite;
+  pointer-events: none;
+}
+
+/* EFECTOS DE SCROLL */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* PATTERN OVERLAY MEJORADO */
+.pattern-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(196, 160, 53, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(26, 60, 52, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* VALOR TAG MEJORADOS */
+.value-tag {
+  position: relative;
+  overflow: hidden;
+}
+
+.value-tag::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-sacred-gold);
+  transition: left 0.6s ease;
+  z-index: -1;
+  border-radius: 50px;
+}
+
+.value-tag:hover::before {
+  left: 0;
+}
+
+.value-tag:hover {
+  color: white !important;
+}
+
+/* RESPONSIVE ENHANCEMENTS */
+@media (max-width: 768px) {
+  .hero h1 {
+    animation: slide-in-up 1s ease-out;
+  }
+  
+  .timeline-year {
+    font-size: 1.8rem;
+  }
+  
+  .value-card {
+    animation: fade-in-up 0.8s ease-out;
+  }
+  
+  .campus-card {
+    height: 280px;
+  }
+  
+  .back-to-top {
+    width: 50px;
+    height: 50px;
+    font-size: 1.4rem;
+  }
+}
+
+/* EFECTOS DE TEXTO */
+.text-gradient {
+  background: linear-gradient(135deg, var(--primary-deep-teal) 0%, var(--primary-sacred-gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* TOOLTIPS Y POPOVERS */
+.tooltip-inner {
+  background: var(--primary-deep-teal);
+  border-radius: 8px;
+  animation: fade-in-up 0.4s ease-out;
+}
+
+.tooltip-arrow::before {
+  border-top-color: var(--primary-deep-teal) !important;
+}
+
+/* ENHANCEMENT PARA CONTRASTE */
+:focus-visible {
+  outline: 3px solid var(--primary-sacred-gold);
+  outline-offset: 2px;
+}
+
+/* LOADING ANIMATION */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.loading {
+  animation: pulse 2s ease-in-out infinite;
+}
